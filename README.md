@@ -1,2 +1,2 @@
 # 01_front
-html / css / javascript
+html / css / javascript / jQuery
