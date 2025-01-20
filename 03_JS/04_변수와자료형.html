@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 변수와 자료형</title>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h2>변수 선언 시 var, let, const라는 키워드를 사용해서 선언 가능</h2>
+    
+    <h4>*변수 선언 방법</h4>
+    <ul>
+        <li>var : 중복 선언이 가능, 재할당 가능</li>
+        <li>let : 중복 선언 불가능, 재할당 가능</li>
+        <li>const : 중복 선언 불가능, 재할당 불가능</li>
+    </ul>
+
+    <button onclick="check1();">확인</button>
+
+    <script>
+        function check1() {
+            // var 변수명;
+            var userId = 'user01';      //변수 선언 + 할당
+            console.log(userId);
+
+            var userId = 'user02';      //중복 선언 (이전에 사용된 이름의 변수를 또 선언)
+            console.log(userId);
+            
+            userId = 'user03';      // 재할당 (다시 값을 저장)
+            console.log(userId);
+
+            //  2) let 변수명;
+            let userPwd = 'pass01'; //변수 초기화 (선언+할당)
+            // console.log(userPwd);
+
+            // let userPwd = 'pass02'; //중복 선언 불가능
+
+            userPwd = 'pass03'; //재할당
+            console.log(userPwd);
+
+            //  3) const 변수명;
+
+            const userName = "사용자"; //변수 초기화(선언+할당)
+            console.log(userName);
+
+            // const userName = "홍길동"; //중복 선언 불가능
+
+            userName = "아이유"; //재할당 불가능!
+            //  => 상수 : 한번 초기화된 값을 변경이 불가능!
+            /* 
+                var : 자유롭게 변수 선언, 할당하여 사용할 수 있어 장점으로 보일 수 있으나
+                중복된 변수가 남발할 수 있고 의도치않게 값이 변경될 수 있음(단점)
+                => 이러한 문제를 보완하고자 let, const 타입이 추가됨
+
+                * 권장사항 : let, const 사용 *
+            */
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 자료형</h3>
+    <p>
+        변수 선언 시 자료형을 별도로 지정하지 않음 (=> 자료형의 개념이 없는 것은 아님)<br>
+        => 한 줄씩 실행되는 인터프리터 언어 특성상 변수에 대입되는 값에 따라서 알아서 자료형이 결정됨
+    </p>
+
+    <h4>자바스크립트의 자료형</h4>
+    <ul>
+        <li>숫자 : Number</li>
+        <li>문자열 : String</li>
+        <li>논리값 : Boolean</li>
+        <li>초기화 되지 않은 것 : undefined</li>
+        <li>값이 없는 것 : null</li>
+        <li>객체/배열/함수 : Object</li>
+    </ul>
+    <button onclick="check2();">자료형 확인</button>
+
+    <script>
+        function check2() {
+            // -------------------- 숫자 타입 --------------------
+            const num = 10;
+            const num2 = -30;
+            const num3 = 3.14159265;
+
+            // 타입 확인 -> typeof(값) 또는 typeof 값
+            console.log(num);
+            console.log(typeof(num)); // => "number"
+            console.log(typeof(num2));
+            console.log(typeof(num3));
+
+            console.log( typeof(num) == "number" ); // => true
+
+
+            // -------------------- 문자열 타입 --------------------
+            const str = "아이유";
+            console.log(typeof str);
+            
+            /* 
+                \n : new line (줄바꿈)
+                \t : tab
+                \\ : \
+            */
+
+            const str2 = "안녕하세요... \n \t 반갑습니다";
+            console.log(str2);
+
+            console.log("안녕하세요 " + str + "입니다");
+            console.log('안녕하세요 ' + str + '입니다');
+            console.log(`안녕하세요 ${str}입니다` );
+
+
+            // -------------------- 논리값 (boolean) --------------------
+            const isTrue = true;
+            const isFalse = false;
+
+            console.log(typeof isTrue);
+            console.log(typeof isFalse);
+
+            // -------------------- unndefined --------------------
+            let num4;       // 변수 선언만. 값은 할당하지 않음
+            console.log(num4);          // => undefined
+            console.log(typeof num4);   // => "undefined"
+
+            // num4 = undefined;   undefined를 직접 할당하는 것은 지향하지 않음
+
+
+            // -------------------- null --------------------
+            // => 값이 없다는 뜻. 명시적으로 없는 값으로 초기화하고자 할 때도 사용함.
+            let num5 = null;
+            console.log(num5);          // => null
+            console.log(typeof num5);   // => "object"
+
+            if(num5 == null) {
+                console.log("num5 는 null이다!");
+            }
+
+            // -------------------- object --------------------
+            // * key:value 한 쌍으로 이루어져 있음
+            // {key: value, key: value, key: value, ...};
+            const dictionary = {
+                red: "빨간색",
+                yellow: "노란색",
+                blue: "파란색"
+            };
+            console.log(dictionary);
+            console.log(typeof dictionary);
+
+            console.log(dictionary.blue);   
+            // >>> '파란색'이라는 글자만 꺼내고 싶을 때! dictionary 라는 변수에 있는 데이터들 중에 blue라는 key값을 가지고 값을 찾은 것
+            // 연결 연산자를 쓸 때는 공백을 사용할 수 없음
+            console.log(dictionary['blue']);
+            // 공백이 있는 경우 [대괄호]안에 key 값을 사용함
+            
+
+            // dictionary라는 변수에 red라는 key값으로 접근을 해서 우변의 값으로 변경하겠다는 뜻
+            dictionary.red = "붉은색";
+
+            // -------------------- 배열 타입 (Array)
+            const arr = [];     // [] 배열이 비어있는 상태
+            arr.push("KH");
+            arr.push("A 강의장");
+
+            console.log(arr);
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 변수 명명 규칙 *</h3>
+    <ol>
+        <li>일반적으로 영어(소문자/대문자)를 사용하고, 문자와 숫자를 모두 사용 가능하다</li>
+        <li>특수문자 _ 또는 $만 사용 가능하다</li>
+        <li>숫자로 시작할 수 없다  ex) 100(x), 1abd(x)</li>
+        <li>키워드(예약어)를 변수명으로 사용할 수 없다  ex)let, for, const, var, if, ...</li>
+    </ol>
+
+    <h4>표기법 (Naming Type)</h4>
+    <ol>
+        <li>camelCase : 자주 사용되는 표기법. <br> 
+            소문자로 시작하고 다른 단어가 시작될 때마다 대문자로 구분하는 방법
+            <ul>
+                <li>user id -> userId</li>
+                <li>product name -> productName</li>
+            </ul>
+        </li>
+        <li>snake_case : 파이썬에서 주로 사용되는 표기법. <br> 
+            단어마다 _로 구분한다
+            <ul>
+                <li>user id -> user_id</li>
+                <li>product name -> product_name</li>
+            </ul>
+        </li>
+        <li>PascalCase : c# 도는 ms계열의 언어에서 사용되는 표기법. <br>
+            모든 단어의 시작을 대문자로 구분한다
+        <ol>
+            <li>user id -> userId</li>
+            <li>product name -> ProductName</li>
+        </ol></li>
+    </ol>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

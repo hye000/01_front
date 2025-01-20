@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 글꼴 관련 스타일</title>
+
+    <style>
+        #ff1 {font-family: 궁서체;}
+        #ff2 {font-family: 고딕체;}
+        #ff3 {font-family: 혜영체, 궁서체;}
+        
+        /* 첫 번째로 제시한 글꼴이 없는 경우 대체할 글꼴을 나열하여 작성 가능 */
+
+        .gowun-dodum-regular, #ff5 {
+        font-family: "Gowun Dodum", serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        #fs1{font-size: 20px;}
+        #fs2{font-size: 1.5em;}
+        #fs3{font-size: 180%}
+
+        #fw1{font-weight: bold;}
+        #fw2{font-weight: bolder;}
+        #fw3{font-weight: lighter}
+    </style>
+
+<!-- 구글 폰트 관련 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>글꼴 관련 스타일 속성</h1>
+
+    <h3>font-family : 글꼴 지정</h3>
+    <pre>
+        선택자 {
+            font-family: 글꼴명;
+        }
+    </pre>
+
+    <!-- p#ff$*3 -->
+    <p id="ff1">글꼴 확인 1</p>
+    <p id="ff2">글꼴 확인 2</p>
+    <p id="ff3">글꼴 확인 3</p>
+
+    <h3>외부 웹 폰트 적용</h3>
+    <p>
+        웹 폰트 제공 사이트 : <a href="http://fonts.google.com" target="_blank">구글 웹 폰트</a>
+    </p>
+
+    <p class="gowun-dodum-regular">가져온 폰트</p>
+    <p id="ff5">아이디로 지정</p>
+
+    <hr>
+
+    <h3>font-size : 글자 크기 지정</h3>
+    <pre>
+        선택자 {
+            font-size: 크기(px, em(배수));
+        }
+    </pre>
+
+    <ul>
+        <li id="fs1">고정크기(px) 확인</li>
+        <li id="fs2">가변크기(em) 확인</li>
+        <li id="fs3">가변크기(%) 확인</li>
+    </ul>
+
+    <hr>
+
+    <h3>font-weight : 글자 굵기 표현</h3>
+    <pre>
+        선택자 { 
+            font-weight: normal | bold | bolder | lighter | 100 ~ 900
+        }
+    </pre>
+
+    <!-- ul>li+li#fw$*3 -->
+    <ul>
+        <li>원래 글자</li>
+        <li id="fw1">굵게 표현</li>
+        <li id="fw2">원래 굵기보다 굵게 표현</li>
+        <li id="fw3">원래 굵기보다 가늘게 표현</li>
+    </ul>
+
+    <hr>
+
+    <h3>font-variant : 영문 텍스트 문구를 작은 크기의 대문자로 변경</h3>
+    <pre>
+        선택자 {
+            font-variant; small-caps;
+        }
+    </pre>
+    <p>I LOVE YOU</p>
+    <p style="font-variant:small-caps">i love you</p>
+
+    <hr>
+
+    <h3>font-style : 글자를 기울여서 표현</h3>
+    <pre>
+        선택자 {
+            font-style: normal | italic | oblique;
+        }
+    </pre>
+    <em>em 태그</em>
+    <p style="font-style:italic;">기울임 글꼴</p>
+    <p style="font-style:oblique;">oblique : 원래 글자를 기울여서 표현</p>
+
+
+</body>
+</html>

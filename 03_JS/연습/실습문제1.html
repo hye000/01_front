@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제1</title>
+
+    <style>
+        #output {
+            width: 800px;
+            height: 200px;
+            border: 1px solid salmon;
+        }
+
+        .hobbyList {
+            width: 770px;
+            /* text-align: center; */
+        }
+
+        .hobbyList>input,
+        label {
+            /* width: 800px; */
+            display: inline-block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice 1</h1>
+    <form action="">
+        <fieldset class="hobbyList">
+            <legend>  취미 </legend>
+
+            <input type="checkbox" name="hobby" id="all" value="all" onchange="allCheck();">
+            <label for="all">전체선택</label>
+
+            <input type="checkbox" name="hobby" id="overall" value="종합" onchange="checkboxClick();">
+            <label for="overall">종합</label>
+
+            <input type="checkbox" name="hobby" id="fiction" value="소설" onchange="checkboxClick();">
+            <label for="fiction">소설</label>
+
+            <input type="checkbox" name="hobby" id="essay" value="시/에세이" onchange="checkboxClick();">
+            <label for="essay">시/에세이</label>
+
+            <input type="checkbox" name="hobby" id="economic" value="경제/경영" onchange="checkboxClick();">
+            <label for="economic">경제/경영</label>
+
+            <input type="checkbox" name="hobby" id="selfhelp" value="자기계발" onchange="checkboxClick();">
+            <label for="selfhelp">자기계발</label>
+
+            <input type="checkbox" name="hobby" id="child" value="아동" onchange="checkboxClick();">
+            <label
+                for="child">아동</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="hobby" id="travel" value="여행" onchange="checkboxClick();">
+            <label for="travel">여행</label>
+
+            <input type="checkbox" name="hobby" id="science" value="과학" onchange="checkboxClick();">
+            <label for="science">과학</label>
+
+            <input type="checkbox" name="hobby" id="culture" value="역사/문화" onchange="checkboxClick();">
+            <label for="culture">역사/문화</label>
+
+            <input type="checkbox" name="hobby" id="language" value="외국어" onchange="checkboxClick();">
+            <label for="language">외국어</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="hobby" id="computer" value="컴퓨터" onchange="checkboxClick();">
+            <label for="computer">컴퓨터</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="hobby" id="comic" value="만화" onchange="checkboxClick();">
+            <label for="comic">만화</label>
+        </fieldset>
+    </form>
+    <br>
+
+    <button onclick="selectCategory();">카테고리 선택</button>
+    <div id="output"></div>
+
+
+    <!-- 스트립트 -->
+
+    <script>
+        function checkboxClick() {
+            let allChecked = true;
+
+            let hobbyLists = document.getElementsByName("hobby");
+
+            for(let hobby of hobbyLists) {
+                
+                console.log(hobby.value);
+                
+                if (hobby.value == "all") {
+                    continue;
+                }
+
+                if (hobby.checked == false) { 
+                    allChecked = false;
+                }
+            }
+
+            document.getElementById("all").checked = allChecked;
+
+        }
+
+        function allCheck() {
+            let all = document.getElementById("all");
+            console.log(all.checked);
+
+            let hobbyLists = document.getElementsByName("hobby");
+
+            for(let checkbox of hobbyLists) {    
+                checkbox.checked = all.checked;
+            }
+        }
+
+        function selectCategory() {
+            let hobbyLists = document.getElementsByName("hobby");
+            let output = "";
+
+            for(let hobby of hobbyLists) {
+                if (hobby.value == "전체선택") {
+                    continue;
+                }
+
+                if(hobby.checked) {
+                    output = output + " " + hobby.value;
+                }
+            }
+
+            document.getElementById("output").innerHTML = output;
+
+        }
+        
+    </script>
+</body>
+
+</html>

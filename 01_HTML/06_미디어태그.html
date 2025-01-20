@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 미디어 태그</title>
+</head>
+<body>
+    <h2>이미지 태그 : img</h2>
+    <!-- 
+        <img src="표시하고자 하는 이미지 경로"
+             alt="이미지 설명. 이미지가 표시되지 않을 경우 안내." (생략 가능)
+             width="가로길이(px,%)"
+             height="세로길이(px,%)"             
+         />
+    -->
+    <h3> * src 속성 : 이미지 경로</h3>
+    <img src="resources/lantern.jpg" />
+    <img src="https://cdn.pixabay.com/photo/2024/11/24/06/33/fireworks-9220290_1280.jpg"/>
+
+    <h3> * alt 속성 : 이미지 설명</h3>
+    <p>
+        - 이미지 경로가 잘못되었을 경우 대체할 텍스트 <br>
+        - 시각 장애인들을 위한 스크린 리더에서 이미지에 대한 설명을 읽어줄 수 있음
+    </p>
+    <img src="qqq.jpg" alt="찾을 수 없음"/>
+    <img src="resources/lantern.jpg" alt="랜턴 이미지"/>
+
+    <h3> * width, height 속성</h3>
+
+        이미지의 가로 길이(width), 세로 길이(height) 길이 조정 가능 <br>
+        고정길이(px), 가변길이(%) 지정 => 기본값 : px
+    </p>
+
+    <h4>고정 길이(px) => 기본값(단위)</h4>
+    <p>화면 크기가 변경되어도 이미지의 크기는 고정(변동 없음)</p>
+    <img src="resources/lantern.jpg" width="200px" height="150px"/>
+    <img src="resources/lantern.jpg" width="200px" height="100px"/>
+    <img src="resources/lantern.jpg" width="150px" height="150px"/>
+    <img src="resources/lantern.jpg" width="100px" height="100px"/>
+
+    <h4>가변 길이(%)</h4>
+    <p>화면 크기에 따라 이미지의 크기가 변경 <br>
+       부모 요소 크기에 따라서도 이미지의 크기가 변경됨
+    </p>
+
+    <img src="resources/lantern.jpg" width="10%" />
+    <img src="resources/lantern.jpg" width="15%"/>
+    <img src="resources/lantern.jpg" width="20%"/>
+    <img src="resources/lantern.jpg" width="25%"/>
+
+    <hr>
+
+    <h2> 오디오 태그 : audio</h2>
+    <!--
+        <audio src="오디오 파일 경로"
+            controns autoplay loop muted />
+
+        - controls : 재생도구 출력여부
+        - autoplay : 자동재생 여부 => 동작되지 않음
+        - loop     : 반복재생 여부
+        - muted    : 음소거 설정
+    
+    -->
+    <audio src="resources/inner_peace.mp3"
+           controls autoplay loop muted ></audio>
+
+    <hr>
+
+    <h2>비디오 태그</h2>
+    <!--
+        <video src="비디오 파일 경로"
+               controls autoplay loop
+               width="가로길이" height="세로길이"
+               poster="썸네일 이미지 경로"></video>
+    -->
+        
+    <video src="resources/sample.mp4"
+            controls autoplay loop muted
+            width="300" height="200"
+            poster="resources/lantern.jpg"
+    ></video>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 바</title>
+
+    <style>
+        div{border: 1px solid black; box-sizing: border-box;}
+
+        /* 여기서부터 적용 */
+
+        ul{list-style-type: none; margin:0; padding:0;}
+        a{text-decoration: none; color: black; }
+
+        #navigator{width: 80%; height: 40px;}
+        #nav{height: 100%;}
+        #nav>li{float: left; 
+            width: 120px; height: 100%; 
+            text-align: center;
+        }
+        #nav a{
+            font-size: 18px;
+            font-weight: 900;
+            width: 100%; height: 100%;
+            display: block;
+            line-height: 35px;
+        }
+        #nav>li>ul{display:none;}
+        #nav a:hover{color:cadetblue; scale:1.1; }  /* font-size: 20px; */
+        #nav>li>a:hover+ul{display: block;}
+        #nav>li>ul:hover{display: block;}
+    </style>
+</head>
+<body>
+    <div id="navigator">
+        <ul id="nav">
+            <li><a href="">Front-end</a>
+                <ul>
+                    <li><a href="">HTML</a></li>
+                    <li><a href="">CSS</a></li>
+                    <li><a href="">Java Script</a></li>
+                    <li><a href="">jQuery</a></li>
+                </ul></li>
+            <li><a href="">Java</a></li>
+            <li><a href="">Oracle</a></li>
+            <li><a href="">Server</a>
+                <ul>
+                    <li><a href="">JDBC</a></li>
+                    <li><a href="">Servlet</a></li>
+                    <li><a href="">JSP</a></li>
+                    <li><a href="">Ajax</a></li>
+                </ul></li>
+            <li><a href="">Framework</a></li>
+        </ul>
+    </div>
+</body>
+</html>

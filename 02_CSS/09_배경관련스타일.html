@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 배경 관련 스타일</title>
+
+    <style>
+        #bg1{
+            background-color: olivedrab;
+            padding: 20px;
+            border: 30px solid darkorange;
+            width: 50%;
+            box-sizing: border-box; 
+            /* content영역만이 아닌 padding, border 영역을 포함하기 위해서
+            box-sizing 속성을 border-box로 설정해야 함
+            -> 테두리 포함 영역까지 적용 */
+        }
+        .bc-class{
+            background-color: cadetblue;
+            margin: 30px;
+            padding: 20px;
+            border: 15px double darkslategrey;
+        }
+        #bc1{background-clip: border-box;}
+        #bc2{background-clip: padding-box;}
+        #bc3{background-clip: content-box;}
+
+        #bg2{
+            border: 3px solid cornflowerblue;
+            width: 70%;
+            height: 700px;
+
+            background-image: url(resources/images/flower-pot.png);
+            background-repeat: no-repeat; /* repeat 기본값*/ 
+            background-size: 50% 50%; /* auto 기본값 */
+            background-position: 50% 50%; /* left top 기본값 */
+            background-attachment: fixed; /* scroll 기본값 */
+        }
+    </style>
+</head>
+
+<body style="background-color: #f9ff92;">
+    <h1>배경 관련 스타일 (background~)</h1>
+
+    <h3>background-color : 배경 색상 지정</h3>
+    <div id="bg1">
+        B-612라는 소행성에서 살고 있던 소년. 명칭은 '왕자'이지만, 만나는 사람들은 딱히 그를 왕자로 여기고 존대하지는 않는다. 일단 자기 별에 사는 사람은 어린 왕자 본인 뿐이어서 왕국이라 할 수도
+        없지만 일단 왕자라고 칭해진다.[6] 프랑스를 비롯한 서양권에서는 프린스가 왕의 아들, 왕자라는 뜻도 있지만, 한 지역을 다스리는 공국의 군주, 공작이라는 의미도 있다. 어린 왕자는 소행성의 주인이므로
+        어린 군주라는 뜻이다.
+
+        어린 왕자는 B-612에서 바오밥나무 싹을 캐거나 석양을 보며 살고 있다. B-612는 크기가 너무 작아서, 바오밥나무 같은 게 자라나면 통째로 산산조각이 날 수 있다고 한다. 어린 왕자가 조종사에게
+        양을 그려달라고 부탁한 이유도, 양에게 바오밥나무 싹을 먹여 문제를 해결하기 위함이었다. 어린 왕자는 게으름뱅이가 혼자 사는 별을 본 적이 있는데, 게으름뱅이는 '아직 작으니까'라는 생각으로 3그루나
+        되는 바오밥나무를 방치해두었다고. 어린 왕자가 그 뒤에 말을 잇지 못하는 걸 보면, 아마 게으름뱅이의 별은 산산조각이 난 모양이다.
+
+        어린 왕자는 석양도 즐겨 본다. 본인 말로는 우울하거나, 쓸쓸하거나, 어쨌든 기분이 좋지 않을 때 석양을 본다고 한다. 어린 왕자의 별은 하도 작아서 그저 의자 방향을 움직이는 것만으로도 석양을 몇
+        번이고 볼 수 있는데, 어린 왕자는 "언젠가는 하루에 석양을 44번이나 본 적이 있다"고도 말했다.[7] 그러자 조종사는 "그날은 네가 정말로 기분이 좋지 않았던 날이었겠구나"라고 말한다. 이에 어린
+        왕자는 아무 대답도 하지 않았다고 한다. 어린 왕자와 조종사가 만난 지 4일째 되던 날, 어린 왕자는 조종사에게 "석양을 보고 싶어. 석양을 보러 가자."고 말했다가, "이곳(지구)이 내가 살던 별이
+        아님을 깜빡 잊고 있었다"는 말을 한다.
+    </div>
+
+    <hr>
+
+    <h3>background-clip : 배경을 적용시키고자 하는 범위를 지정</h3>
+    <pre>
+        선택자{
+            background-clip: border-box(기본) | padding-box | content-box;
+        }
+    </pre>
+
+    <div class="bc-class" id="bc1">
+        B-612라는 소행성에서 살고 있던 소년. 명칭은 '왕자'이지만, 만나는 사람들은 딱히 그를 왕자로 여기고 존대하지는 않는다. 일단 자기 별에 사는 사람은 어린 왕자 본인 뿐이어서 왕국이라 할 수도
+        없지만 일단 왕자라고 칭해진다.[6] 프랑스를 비롯한 서양권에서는 프린스가 왕의 아들, 왕자라는 뜻도 있지만, 한 지역을 다스리는 공국의 군주, 공작이라는 의미도 있다. 어린 왕자는 소행성의 주인이므로
+        어린 군주라는 뜻이다.
+    </div>
+    <div class="bc-class" id="bc2">
+        B-612라는 소행성에서 살고 있던 소년. 명칭은 '왕자'이지만, 만나는 사람들은 딱히 그를 왕자로 여기고 존대하지는 않는다. 일단 자기 별에 사는 사람은 어린 왕자 본인 뿐이어서 왕국이라 할 수도
+        없지만 일단 왕자라고 칭해진다.[6] 프랑스를 비롯한 서양권에서는 프린스가 왕의 아들, 왕자라는 뜻도 있지만, 한 지역을 다스리는 공국의 군주, 공작이라는 의미도 있다. 어린 왕자는 소행성의 주인이므로
+        어린 군주라는 뜻이다.
+    </div>
+    <div class="bc-class" id="bc3">
+        B-612라는 소행성에서 살고 있던 소년. 명칭은 '왕자'이지만, 만나는 사람들은 딱히 그를 왕자로 여기고 존대하지는 않는다. 일단 자기 별에 사는 사람은 어린 왕자 본인 뿐이어서 왕국이라 할 수도
+        없지만 일단 왕자라고 칭해진다.[6] 프랑스를 비롯한 서양권에서는 프린스가 왕의 아들, 왕자라는 뜻도 있지만, 한 지역을 다스리는 공국의 군주, 공작이라는 의미도 있다. 어린 왕자는 소행성의 주인이므로
+        어린 군주라는 뜻이다.
+    </div>
+
+    <hr>
+    <h3>배경에 이미지 적용</h3>
+    <pre>
+        선택자{
+            background-image: url("이미지 경로")
+            background-repeat: repeat | repeat-x | repeat-y | no-repeat;
+            background-size: auto | contain | cover | px px | % % ;
+            background-position: 좌/우/가운데 위/아래/가운데 | px px | % %;
+            background-attachment: scroll | fixed;
+        }
+    </pre>
+
+    <div id="bg2"></div>
+</body>
+
+</html>

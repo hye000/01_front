@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 개요</title>
+
+    <!-- 온라인 방식(CDN)으로 jQuery 연결 -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <!-- 오프라인 방식(다운로드)으로 jQuery 연결 -->
+     <script src="resources/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery</h1>
+
+    <h3><i>* jQuery란?</i></h3>
+    <p>
+        기존 자바스크립트 언어만으로 구현하기 복잡했던 구문들을
+        간소화하기 위해 만들어진 자바스크립트 기반의 라이브러리<small>(유용한 기능 모음집)</small>다. <br>
+        즉, 자바스크립트 언어로 유용한 함수나 내용들을 다른 누군가가 정의해 놓은 것이다. <br>
+        복잡한 자바스크립트 코드보다 짧고 쉽게 개발이 가능하다.
+    </p>
+
+
+    <h4>장점</h4>
+    <ol>
+        <li>DOM 요소와 관련된 스크립트를 쉽게 구현할 수 있다.</li>
+        <li>AJAX(비동기 통신 방법), 이벤트 처리 등의 기능을 폭넓게 지원해준다.</li>
+        <li>jQuery와 관련된 확장된 플러그인, 오픈 API등을 지원해준다. (차트, 슬라이드, 캘린더, ...)</li>
+    </ol>
+
+    <br>
+
+    <h3><i>* jQuery 연결방법</i></h3>
+    <p>
+        head 태그 내에 script 태그로 외부 jQuery관련.js 파일을 연결해준다.
+        (온라인/ 오프라인 방식) <br>
+        - jQuery 공식 사이트 : 
+        <a href="https://jquery.com/" target="_blank"
+        style="background-color: yellowgreen;">jQuery 사이트</a>
+
+    </p>
+
+    <ol>
+        <li>온라인 방식(CDN)방식 : 파일을 다운로드 하지 않고, 라이브러리를 제공하는 사이트 url을 연결하는 방식</li>
+        <li>오프라인 방식 : jQuery 라이브러리 파일을 직접 다운로드 받아 경로를 작성한다.
+            <ul>
+                <li>Compressed (배포전용) : .min.js <br>
+                    주석, 들여쓰기, 띄어쓰기 등을 최소화하여 용량을 줄여 제공되는 파일이다.</li>
+                <li>UnCompressed (개발자전용) : .js <br>
+                    개발자가 보기 쉽도록 주석, 코드 정렬이 되어있는 파일이다. (가독성 좋음)</li>
+            </ul>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h3><i>* jQuery 구문 작성 방법</i></h3>
+    <p>
+        jQuery 구문으로 DOM요소를 다루는 구문을 사용하기 위해서 문서 상의 모든 요소들이 만들어진 이후 실행되어야 한다. <br>
+        => 순수 자바스크립트에서는 onload속성 내에서 작성해야함
+
+        <pre>
+            [window.]onload = function() {
+                // 화면이 모두 표시된 후 실행할 코드
+            }
+
+            * window.onload의 경우 해당 문서에서 단 한번만 작성 가능하다!
+        </pre>
+
+        <br>
+
+        => jQuery에서 onload 구문 (3가지)
+        <pre>
+            (1) jQuery(document).ready(function() {
+                // 실행할 코드
+            });
+
+
+            (2) $(document).ready(function() {
+                // 실행할 코드
+            });
+
+
+            (3) $(function() {
+                // 실행할 코드
+            });
+
+            * 제한없이 여러 번 사용 가능하다. 위에서부터 순서대로 실행이 된다.
+        </pre>
+    </p>
+
+    <script>
+        // --------------------- 순수 자바스크립트 방식 --------------------- 
+        window.onload = function() {
+            console.log(" --- 모든 요소 생성 완료 --- ");
+        }
+
+        window.onload = function() {
+            console.log(" --- 모든 요소 생성 완료 2 --- ");
+        }
+        // => 마지막에 작성된 onload만 실행됨!
+
+        // ---------------------------------------------------------------- 
+
+        // -------------------------- jQuery 방식 --------------------------
+        
+
+        jQuery(document).ready(function() {
+            console.log("jQuery 방식으로 모든 요소 출력 완료 1!!");
+        });
+
+        $(document).ready(function() {
+            console.log("jQuery 방식으로 모든 요소 출력 완료 2@@");
+        })
+
+        $(function() {
+            console.log("jQuery 방식으로 모든 요소 출력 완료 3##");
+
+            // h3 요소의 배경색 변경
+            // --------------------- 순수 자바스크립트 방식 ---------------------
+           /* const h3List = document.getElementsByTagName("h3");
+            
+            for(let h3 of h3List) {
+                h3.style.backgroundColor = "pink";
+            }; */
+
+            // -------------------------- jQuery 방식 --------------------------
+            // * 요소 접근 : $("선택자")
+            // * 스타일 변경 : .css("스타일속성명", "적용할 값");
+            // 속성 여러개를 바꿀 때는 ({"backgroundColor: pink;", "color : gray"})
+            // (소괄호) 안에 {중괄호} 안에 "따옴표"와 ,쉼표로 나누기
+            
+            $("h3").css("backgroundColor","pink");
+            $("pre").css("backgroundColor","whitesmoke");
+        });
+    </script>
+</body>
+</html>

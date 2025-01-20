@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색창</title>
+
+    <style>
+        div,form,input{border: 1px solid darkgray; box-sizing: border-box;}
+
+        /* 여기서부터 설정 */
+        #header{width: 600px; height: 150px;
+                position: relative; }
+
+        #search-form{
+            width: 80%;
+            height: 20%;
+            margin: auto;
+
+            position: absolute;
+            top: 0; bottom:0; left:0; right:0;
+        }
+        #serach-form>input{height: 100%; float:left; }
+        #search-form>input:nth-child(1){width: 75%;}
+        #search-form>input:nth-child(2){width: 20%;}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <form action="search" id="search-form">
+            <input type="text" name="keyword">
+            <input type="submit" value="검색">
+        </form>
+    </div>
+</body>
+</html>

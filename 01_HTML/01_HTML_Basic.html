@@ -1,0 +1,80 @@
+<!DOCTYPE html>  <!-- 문서 유형 정의. html 형식의 문서 선언 -->
+    <html lang="ko">  <!-- 문서 전체를 감싸는 태그(html). 문서의 시작과 끝을 표시 -->
+        <!-- lang 속성 : 문서 고유 언어 설정 (ko,en, jp . . .)-->
+    
+        <head>  <!-- 문서의 머리부 : 각종 정보/설정 -->
+            <meta charset="UTF-8">   <!-- 인코딩 설정 : charset -->
+            <meta name="viewport" content="width=device-width">
+            <!-- 뷰포트 (브라우저의 웹 콘텐츠를 볼 수 있는 창의 영역) -->
+
+            <meta name="generator" content="VS code">    <!-- 문서 작성 시 사용된 프로그램 -->
+            <meta name="author" content="hyeyoung">  <!-- 문서 작성자 -->
+            <meta name="description" content="HTML 공부를 위한 첫번째 문서"> <!-- 문서 설명 -->
+
+            <title>HTML 시작하기</title>    <!-- 문서의 제목 설정(브라우저의 탭 부분에 반영) -->
+
+        </head>
+
+        <body>
+            <!-- 몸체부. 실제로 브라우저에 표시되는 내용. -->
+             <h1>제목1</h1>
+             <h2>제목2</h2>
+             <h3>제목3</h3>
+             <h4>제목4</h4>
+             <h5>제목5</h5>
+             <h6>제목6</h6>
+             <hr>
+        
+                내용1<br>
+                내용2
+             <br>
+    
+                <strong>강조문구1</strong>   <!-- 중요한 텍스트를 강조할 때 사용(strong) -->
+                <b>강조문구2</b>    <br>
+                <mark>형광펜</mark> <br>
+                <u>밑줄</u> <br>
+                <s>취소선</s>   <br>
+                <em>기울임1</em>    <!-- 중요한 텍스트를 강조할 때 사용(em)-->
+                <i>기울임2</i>
+                <br>
+                <small>작은 글씨</small> 원래 크기
+                <blockquote>인용 내용</blockquote>  <!-- 자동 들여쓰기가 되고 개행(enter)을 내포하고 있음-->
+                <br>
+                <q>따옴표 표시</q>  <!-- 개행을 내포하고 있지 않음-->
+                <br>
+                첨자<sup>첨자</sup> X<sup>2</sup>   <br>    <!-- 위 첨자로 표기 -->
+                첨자<sub>첨자</sub> H<sub>2</sub>O  <!-- 아래 첨자로 표기 -->
+                <br>
+                <abbr>태그 위에 마우스를 올려놓으면 툴팁 형태로 출력 abbr </abbr>
+                <br>
+                <cite>이텔릭으로 표기</cite>    <br>
+                <code>console.log 소스코드를 담는 태그</code>   <br>
+                내용을 저장할 때는 <kbd>Ctrl + S</kbd> 키보드를 눌러주세요
+                <br><br>
+
+                <ul>    <!-- 순서가 필요하지 않은 목록, 기본 값 점-->
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                </ul>
+
+                <br>
+
+                <ol type="a" start="5"> 
+                    <!-- 순서가 있는 목록. type : 순서 형식(a,A,1,i,I) start : 시작 순서-->
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                </ol>
+
+                <br>
+
+                <dl>    <!-- 용어나 문장에 대한 정의 리스트, 자동으로 들여쓰기 됨 -->
+                    <dt>내용1</dt>  <!-- dt : 제목에 해당 -->
+                    <dd>내용2</dd>  <!-- dd :내용에 해당 -->
+                    <dd>내용3</dd>
+                </dl>
+
+             </p>
+        </body>
+    </html>

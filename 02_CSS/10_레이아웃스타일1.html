@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS 레이아웃 스타일 (1)</title>
+        
+        <style>
+            .size-test{border: 10px solid cadetblue}
+            #size1{
+                width: 500px;
+                height: 300px;
+            }
+            #size2{
+                width: 50%;
+                height: 150px;
+            }
+
+            /* 배경 색상용 클래스 정의 */
+            .red {background-color: red;}
+            .skyblue {background-color: skyblue;}
+            .green {background-color: green;}
+            .pink {background-color: pink;}
+            .violet{background-color: violet;}
+            .blue{background-color:dodgerblue;}
+
+            .display-test{
+                border: 1px solid;
+                width: 100px;
+                height: 100px;
+
+            }
+            .inline{
+                display: inline;
+            }
+            .inline-block{
+                display: inline-block;
+            }
+            .block{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 
+            * 블럭 요소 : 한 줄로 영역을 차지하는 요소 => 줄바꿈 처리 가능
+            (div, p, pre, ...)
+            * 인라인 요소 : content 부분만 영역을 차지하는 요소 => 옆으로 배치
+            (span, small, label, input, ...)
+            * 요소 (Element) => content 영역 + padding 영역 + border 영역
+            요소 바깥쪽 영역 => margin 영역 (바깥쪽 간격)
+            -->
+            
+            <h1>레이아웃 관련 스타일</h1>
+            <h3>width, height</h3>
+            <p>기본적으로 내용을 차지하는 content영역의 가로, 세로 길이를 조절하는 파일 속성</p>
+            
+            <h4>고정크기 (px)</h4>
+            <div class="size-test" id="size1"></div>
+            
+            <h4>가변크기 (%)</h4>
+            <div class="size-test" id="size2"></div>
+
+            <hr>
+            <h3>display : 화면 배치 방법 변경</h3>
+            <pre>
+                선택자{
+                    display: inline | block | inline-block;
+                }
+            </pre>
+            
+            <h4>display: inline</h4>
+            <div class="display-test inline red">가가가</div>
+            <div class="display-test inline skyblue">나나나</div>
+            <div class="display-test inline green">다다다</div>
+            <p> display: inline 스타일을 적용하게 되면 width, heights 스타일이 적용되지 않음</p>
+            <br><br>
+            <h4>display: inline-block</h4>
+            <div class="display-test inline-block pink">라라라</div>
+            <div class="display-test inline-block violet">마마마</div>
+            <div class="display-test inline-block blue">바바바</div>
+            <br>
+            <p>
+                display: inline-block 스타일을 적용하게 되면 인라인 요소의 특징과
+                블럭 요소의 특징을 모두 가진 요소가 됨
+                옆으로 배치되면서<small>(인라인 요소)</small>, width/height<small>(블럭 요소)</small> 스타일이 적용 됨
+            </p>
+            <br><br>
+            <h4>display: block</h4>
+            <span class="display-test block green">인라인1</span>
+            <span class="display-test block skyblue">인라인2</span>
+            <span class="display-test block pink">인라인3</span>
+
+        </body>
+        </html>

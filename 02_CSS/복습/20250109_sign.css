@@ -1,0 +1,39 @@
+/* 회원가입 화면 css */
+
+.signin{ width: 350px;
+    height: 450px;
+    /* border: 1px solid; */
+    border-radius: 2px;
+    padding: 10px;
+    background-color: #e7e7e7;
+    box-shadow: 0px 0px 5px 2px #adadad;
+    position:absolute;
+    top: 25%;
+    left: 45%;
+}
+
+input,a {display: block; margin:auto;}
+
+label {font-weight: 900; margin-left: 30px;}
+h2 {margin-left: 30px;}
+
+input {width: 290px;
+    height: 25px;
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+a{text-decoration: none;
+    color: black;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #4343ff;
+    background-color: #4343ff;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    line-height: 2.5;
+    margin-top: 30px;
+}

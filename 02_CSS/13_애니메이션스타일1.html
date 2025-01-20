@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 애니메이션 관련 스타일1</title>
+    <style>
+        #translate-box{
+            width: 100px;
+            height: 100px;
+            border: 3px dotted red;
+            /* 
+                border-width: 1px;
+                border-style: dotted;
+                border-color: red;
+            */
+            background-color: orange;
+
+            /* 애니메이션 속성 추가
+                 animation : 이름(@keyframe으로 정의한 이름) duration timing-function delay iterator-count direction 
+                 * duration         : 애니메이션 총 실행 시간 )* 필수
+                 (* timimng-function : 애니메이션 진행 방식) 옵션
+                 (* delay            : 애니메이션 대기 시간)
+                 (* iterator-count   : 애니메이션 진행 횟수)
+                 (* direction         : 애니메이션 진행 방향)
+            */
+
+            animation: move 5s linear 1s 3 infinite alternate;
+        }
+
+        /* 애니메이션 정의 : @keyframes 이름 */
+
+        @keyframes move {
+            /* 애니메이션 시작 -> 0,0 위치에서 배경색을 변경 */
+            0% { background-color: yellow; transform: translate(0px, 0px); }
+            /* 150px만큼 오른쪽으로 이동하면서 배경색 변경 */
+            25% { background-color: darkgoldenrod; transform: translate(150px, 0px);}
+            /* 이전 위치에서 150px만큼 아래로 이동하면서 배경색 변경 */
+            50% { background-color:aquamarine; transform: translate(150px, 150px); }
+            /* 이전 위치에서 150px만큼 왼쪽으로 이동하면서 배경색 변경 */
+            75% { background-color: cornflowerblue; transform: translate(0px, 150px);}
+            /* 시작 위치로 이동하면서 배경색 변경 */
+            100% { background-color: blue; transform: translate(0px, 0px);}
+        }
+    </style>
+</head>
+<body>
+    <h1>translate</h1>
+<p> 요소의 위치를 가로축(x) 또는 세로축(y) 방향으로 이동시키는 기능</p>
+    <div id="translate-box"></div>
+</body>
+</html>

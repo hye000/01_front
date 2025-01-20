@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 문서구조</title>
+    <style>
+        div {border: 1px solid darkgray; box-sizing: border-box; }
+        /* 전체를 감싸는 영역 : .wrap */
+        .wrap{
+            width: 1000px; height: 800px;
+            min-width: 800px; min-height: 500px; /* 최소 크기 설정 min-@ , 최대 크기 설정 max-@*/
+            margin: auto;
+        }
+
+        /* 3개 영역 (#header, #content, #footer) */
+        .wrap>div{width: 100%;}
+        #header, #footer {height: 20%;}
+        #content {height: 60%; display: flex;}
+
+        /* #content 영역 내의 요소 배치 */
+        #content>div{
+            height: 100%; 
+        }
+
+        #content1, #content3{width: 200px;} /* 20% */
+        #content2{width: 600px;} /* 60% */
+        /* width: cal(100% - 400px) 
+            전체 100% 크기에서 400px(#con1,#con3 고정값)을 제외한 크기를 계산해서 적용
+        */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- <header></header> -->
+        <div id="header"></div>
+
+        <!-- <main></main> 또는 <section></section> -->
+        <div id="content">
+
+            <!-- <article></article> 또는 <div></div> -->
+            <div id="content1"></div>
+            <div id="content2"></div>
+            <div id="content3"></div>
+        </div>
+
+        <!-- <fotter></fotter> -->
+            <div id="fotter">
+        <div id="fotter1">
+            <a href="">이용약관</a> |
+            <a href="">개인정보처리방침</a> |
+            <a href="">인재 채용 문의</a> |
+            <a href="">훈련비 게시</a> |
+            <a href="">강사 구인</a>
+        </div>
+        <div id="fotter2">
+        <p id="p1">
+            KH정보교육원 ｜ 대표자 : 양진선 ｜ 책임자 : 최홍석 ｜ 개인정보관리책임자
+            : 양진선
+        </p>
+
+        <p id="p2">
+            강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F<br>
+            강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F<br>
+            강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F<br>
+            종로점 : 서울특별시 중구 남대문로 120 그레이츠 청계(구 대일빌딩) 2F, 3F<br>
+            당산점 : 서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F, 20F<br>
+            논현점 : 서울특별시 강남구 논현로 132길 9 마루빌딩 1F, 2F, 3F<br>
+            부산점 : 부산 부산진구 중앙대로 627 삼비빌딩 2F, 12F
+        </p>
+
+        <p id="p3">
+            Copyright © 1998-2025 KH Information Educational Institute All Right Reserved
+        </p>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

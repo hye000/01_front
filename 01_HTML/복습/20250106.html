@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습 - 2025/01/06</title>
+</head>
+
+<body>
+    <header>
+        <h1>회원가입</h1>
+        <p>아래 정보를 입력하여 회원가입을 완료하세요.</p>
+    </header>
+
+    <main>
+        <form action="enroll" method="post">
+            <section>
+                <fieldset>
+                    <legend>사용자 정보</legend>
+                    <label for="username">이름:</label>
+                    <input type="text" id="username" name="username" required>
+                    <br><br>
+
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email"required>
+                    <br><br>
+
+                    <label for="password">비밀번호:</label>
+                    <input type="password" id="password" name="password"required>
+
+                </fieldset>
+
+
+            </section>
+            <br>
+
+            <section>
+                <fieldset>
+                    <legend>추가 정보</legend>
+                    <span>성별:</span>
+                    <label>
+                        <input type="radio" name="gender" value="male" required> 남성
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" required> 여성
+                    </label>
+                    <br><br>
+
+                    <label for="interests">관심사:</label>
+                    <select id="interests">
+                        <option value="sports">스포츠</option>
+                        <option value="music">음악</option>
+                        <option value="tech">기술</option>
+
+                </fieldset>
+
+
+                </select>
+            </section>
+            <br>
+
+            <button type="submit">가입하기</button>
+            <button type="reset">다시입력</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>문의사항이 있으시면 <a href="mailto:help@example.com">help@example.com</a>으로 연락해주세요.</p>
+    </footer>
+</body>
+
+</html>

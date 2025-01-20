@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 객체</title>
+    <style>
+        .area {
+            border: 3px solid rgb(47, 61, 107);
+            background-color: rgb(150, 198, 212);
+        }
+
+        .big {
+            height: 500px;
+        }
+
+        .small {
+            height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>객체</h1>
+    <h3>* 객체 선언 및 사용</h3>
+    <p>
+        객체는 { }를 사용해서 생성하고,
+        { } 안에 필요한 속성들을 정의한다. <br>
+        * 형태 => 속성명(key) : 속성값(value)
+        <br><br>
+        객체를 파일로 저장할 때 확장자를 .json으로 설정한다. <br>
+        JSON 형식이라고 표현하기도 한다.
+    </p>
+    <pre>
+        변수 = {
+            속성명 : 속성값,
+            속성명 : 속성값,
+            속성명 : 속성값,
+            ...
+        }
+    </pre>
+    <button onclick="test1();">실행</button>
+    <div class="area big" id="area1"></div>
+
+    <script>
+        function test1() {
+            // 객체 선언
+            /* 제품 정보
+                이름 : 망고
+                가격 : 10000
+                원산지 : 필리핀산
+                사이즈 : 가로-10, 세로-15
+                제품 번호 : 100
+             */
+
+
+            /*  
+               1) 변수 선언
+               let product;
+
+               2) 객체 형태의 데이터 저장(대입)
+               product = {
+                   name : "망고",
+                   price : 10000,
+                   madeIn : "필리핀",
+                   size : {
+                       width: 10,
+                       height : 15
+                       },
+                   'product number' : 100
+               }
+            */
+
+            let product = {
+                name: "망고",
+                price: 10000,
+                madeIn: "필리핀",
+                size: {
+                    width: 10,
+                    height: 15
+                },
+                'product number': 100,
+                etc: [1, 2, 3],
+                "abc!!": "xxx"
+            }
+
+            console.log(product);          // product 변수에 저장된 값 출력
+            console.log(typeof product);   // => object(객체) 타입이다
+
+            //   #area1 영역에 product 객체 출력
+
+            const area1 = document.getElementById("area1");
+            area1.innerHTML = "product : " + product + "<br>";
+
+
+            // 객체 속성에 접근하는 방법
+            // 1) 연결(접근) 연산자. 을 사용 : 객체명.속성명 => 속성값을 출력
+
+            area1.innerHTML += "<b>객체.속성명 으로 접근하기</b> <br>";
+            area1.innerHTML += "제품명 : " + product.name + "<br>" +
+                "가격 : " + product.price + "<br>" +
+                "원산지 : " + product.madeIn + "<br>" +
+                "크기(연산자 . ) : " + product.size.width + " x " + product.size.height + "<br>" + "<br>";
+            area1.innerHTML += product.etc[2] + "<br>";
+
+
+            // 연결연산자 . 를 통해서는 접근할 수 없음
+            // 속성명에 공백, 특수문자가 포함된 경우에는 ['속성명'] 사용
+            // 2) 대괄호를 사용하여 접근 : 객체명['속성명'] => 속성값을 출력
+
+            area1.innerHTML += "제품 번호 : " + product['product number'] + "<br>";
+            area1.innerHTML += "abc!! : " + product['abc!!'] + "<br>";
+            area1.innerHTML += "크기(연산자 [' ']) : " + product['size']['width'] + " x " + product['size']['height'] + "<br>";
+        }
+    </script>
+
+    <hr>
+
+    <h3>객체에서의 반복문</h3>
+
+    <pre>
+        for(let 키값 in 객체) {
+            area2.innerHTML += k + " : " + person[k] + "<br>";
+        }
+    </pre>
+    <button onclick="test2();">실행</button>
+    <div class="area small" id="area2"></div>
+
+    
+    <script>
+        function test2() {
+            // #area2 요소 객체 접근
+            const area2 = document.getElementById("area2");
+
+            const arr = ["공유", 40, true];
+            for(let item of arr) {
+                area2.innerHTML += item + "<br>";
+                
+            }
+            area2.innerHTML += "<hr>";
+            const person = {
+                name : "공유",
+                age : 40,
+                etc : true
+            };
+            // for(let item of person) {
+            //     area2.innerHTML += item + "<br>";
+            // }
+            // * 객체는 for~of 문을 사용할 수 없음 => 타입오류 발생
+
+            for(let k in person) {
+
+                console.log(k);
+                console.log(typeof k);
+                console.log(person[k]);
+
+                area2.innerHTML += k + " : " + person[k] + "<br>";
+                // person이라는 객체에서 key값(속성명)에 접근
+                // 해당 key값(속성명)에 저장된 데이터(value)를 가지고 와야 하긱 때문에 person[key]
+                // k 라는 변수는 person객체가 가지고 있는 속성명들이 저장되는 변수
+                // k = "name"; --> k = "age"; --> k = "etc";            => 반복문이 반복되면서 순서대로 속성명에 접근함
+                // person['name'] , person['age'] , person['etc']
+            }
+            // 객체는 for~in 문을 사용할 수 있는데, 반복문이 돌면서 key값(속성명)을 가지고 온다
+        }
+    </script>
+
+    <hr>
+
+    <h3>객체의 함수 속성 : 메소드</h3>
+    <p>
+        객체의 속성 중 함수 형태의 속성을 메소드라고 부른다.
+    </p>
+    <button onclick="test3();">실행</button>
+    <div class="area small" id="area3"></div>
+
+    <script>
+        function test3() {
+            const area3 = document.querySelector("#area3");
+            // 정의
+
+            const dog = {
+                name : '찬이',
+                kind : '웰시코기',
+                eat : function(food) {
+                    area3.innerHTML += "<em>etc메소드 호출</em> <br>";
+
+                    //"찬이가 간식을 먹었습니다." 형태로 출력
+                    // area3.innerHTML += "찬이가 간식을 먹었습니다.";
+                    area3.innerHTML += this.name + "가  " + food + "을 먹었습니다.";
+                    //  this : 객체 내부에서 사용 시 해당 객체를 가리킴
+                }
+            };
+
+            area3.innerHTML += "이름 : " + dog.name + "<br>",
+            dog.eat("고구마");    
+            dog.eatI("뼈다귀")     
+        }
+    </script>
+
+    <hr>
+    <h3>in, with 키워드</h3>
+    <p>
+        * in : 객체 내의 해당 속성이 있는지 확인해 주는 키워드 <br>
+        (true => 존재함, false => 존재하지 않음)
+    </p>
+    <p>
+        * with : 객체의 속성 접근 시 객체 별로 속성을 제시하는 것을
+        생략할 수 있게 해주는 키워드(코드를 간결하게 도와준다)
+    </p>
+
+    <label for="name">이름</label> 
+    <input type="text" id="name"><br>
+    <label for="kor">국어 : <input type="text" id="kor"></label> <br>
+    <label for="math">수학 : <input type="text" id="math"></label> <br>
+    <label for="eng"> 영어 : <input type="text" id="eng"></label> <br>
+    <button onclick="test4();">실행</button>
+    <div class="area big" id="area4"></div>
+    
+    <script>
+        function test4() {
+            // 학생 정보를 저장할 객체
+            const student = {
+                name : document.getElementById("name").value ,
+                kor : Number(document.getElementById("kor").value),     // Number( ) 에 요소를 넣어주면 숫자로 변환 된다
+                math : Number(document.getElementById("math").value),
+                eng : Number(document.getElementById("eng").value),
+                
+                toString: function() {
+                    return  `${this.name}, ${this.kor}, ${this.math}, ${this.eng}`;
+                    //  `` 백틱 안에 작성하는 건 문자열
+                    // = area4.innerHTML += "학생 정보 : " + student.name + ", " + student.kor + ", " +student.math + ", " + student.eng + "<br>";
+                },
+
+                getSum: function() {
+                    // 총점을 구해서 반환
+                    return student.kor + student.math + student.eng ;
+                    // this.kor + this.math + this.eng
+                },
+
+                getAvg: function() {
+                    // 평균을 구해서 반환
+                    // return (this.kor + this.math + this.eng) / 3 ;
+                    return this.getSum() / 3;
+                    // 총합의 나누기 3이니까 이미 평균을 구한 getSum함수를 가져와서 사용함. 함수이기 때문에 () 를 써줘야 함(호출한다는 뜻)
+                }
+            };
+
+            const area4 = document.getElementById("area4");
+            area4.innerHTML = "학생 정보 : " + student.toString() + "<br>";
+
+            // * in : '속성명' in 객체명 -> true/false
+            area4.innerHTML += "name 속성이 있는가? " + ('name' in student) + "<br>";
+            area4.innerHTML += "age 속성이 있는가? " + ('age' in student) + "<br>";
+
+            // * with : with(객체명) {
+            //          속성명
+            //          }
+            with(student) {
+                area4.innerHTML += "이름 : " + name + "<br>";
+                area4.innerHTML += "국어 점수 : " + kor + "<br>";
+                area4.innerHTML += "수학 점수 : " + math + "<br>";
+                area4.innerHTML += "영어 점수 : " + eng + "<br>";
+
+                area4.innerHTML += "총점 : " + getSum() + "<br>";
+                area4.innerHTML += "평균 : " + getAvg() + "<br>";
+
+                
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>객체의 속성 추가/ 삭제</h3>
+    <button onclick="test5();">실행</button>
+    <div class="area small" id="area5"></div>
+
+    <script>
+        function test5() {
+            const area5 = document.getElementById("area5");
+            // 비어있는 객체 선언
+            const student = {};
+            
+            // 속성 추가하기
+            // name속성으로 학생 이름 추가
+            student.name = "정혜영";
+            area5.innerHTML = student.name + "<br>";
+
+            // hobby속성으로 취미 2개 배열형태로 추가
+            student.hobby = ["뜨개", "영화"]
+            area5.innerHTML += student.hobby + "<br>";
+
+            // 메소드 추가 | toString
+            student.toString = function() {
+                return "name : " + this.name + ", hobby : " + this.hobby ;      // this란 함수로 연결되어 있기 때문에 student 속성을 가리킴
+            }   
+
+            area5.innerHTML += student/*.toString()*/; 
+            console.log(student);        /* 문자열 형태로 출력할 때 기본적으로 .toString이라는 함수가 포함되어 있어서
+                                            생략 가능함*/
+
+            // 학생 이름 속성 제거
+            delete(student.name);   // 속성 자체가 삭제됨
+            console.log(student);
+
+            student.hobby = null;   // null을 대입하면 속성은 유지하고, 값만 제거된다.
+            console.log(student);
+        }
+    </script>
+
+    <hr>
+
+    <h3>객체 배열을 사용하여 다량의 데이터 관리</h3>
+    <button onclick="test6();">실행</button>
+    <div class="area small" id="area6"></div>
+
+    <script>
+        function test6() {
+
+            const student0 = {name : "구세연", age : 27, gender: "여"};
+            const student1 = {name : "임성준", age : 26, gender: "남"};
+            const student2 = {name : "김일현", age : 25, gender: "남"};
+            const student3 = {name : "유성재", age : 26, gender: "남"};
+
+            const stdArr = [];      // [ ]
+            stdArr.push(student0);  // [{}]
+            stdArr.push(student1);  // [{}, {} ]
+            stdArr.push(student2);  // [{}, {}, {} ]
+            stdArr.push(student3);  // [{}, {}, {}, {} ]
+
+
+            console.log(stdArr);
+
+            console.log(student2);      // 객체 변수
+            console.log(stdArr[2]);     // 배열에서 2번 인덱스 위치 조회 => 객체 데이터
+
+            console.log(stdArr[2].name);    // 위치 값으로 먼저 객체를 찾고, 해당 객체의 속성으로 접근한 것
+            console.log(stdArr[2]['name']);
+
+            // 학생 이름을 area6 요소에 출력
+
+            /* for(let i=0; i<stdArr.length; i++) {
+            //     stdArr[i];   //  배열에서 i번째 인덱스 위치의 데이터
+            // }
+            */
+
+
+           // 배열의 아이템 (반복문이 실행되면서 처음 위치부터 마지막 위치까지 접근)
+
+            for(let item of stdArr) {
+                // item => 배열의 각 인덱스 위치에 있는 객체 데이터
+                //      stdArr[0], stdArr[1],...
+                document.querySelector("#area6").innerHTML += 
+                    item.name + "<br>";
+            }
+
+            for(let i=0; i<stdArr.length; i++) {
+                document.querySelector("#area6").innerHTML +=
+                 stdArr[i].name + "<br>";    // < 어떤 값을 출력할 것인지. 이 배열의 i번째 인덱스 중에 name 값인 것을 출력하겠다는 뜻
+            }
+
+            for(let i=stdArr.length-1; i>=0; i--) {
+                document.querySelector("#area6").innerHTML +=
+                 stdArr[i].name + "<br>";    
+            }
+
+            //  --------------------------------------------------------------------------------------------------------------
+
+            // 반복문으로 속성 추가하기
+            for (let i=0; i<stdArr.length; i++) {
+                // 각 요소에 point 속성 추가 (기본값 : 0)
+                stdArr[i].point = 0;
+            }
+
+            console.log(stdArr);
+
+            // 반복문을 사용하여 toString 메소드 추가
+            //  "name : xx", age: xx, gender: "xx", point: xx 형식으로 반환
+            
+            for(let i=0; i<stdArr.length; i++) {
+            stdArr[i].toString = function() {
+                return `**name : ${this.name}, age: ${this.age}, gender: ${this.gender}, point: ${this.point}`;
+            }
+ 
+            console.log(stdArr);
+
+            for(let item of stdArr) {
+                document.getElementById("area6").innerHTML += item +"<br>";
+            }
+        }
+
+            // stdArr[1].toString = function() {
+            //     return `name : ${this.name}, age: ${this.age}, gender: ${this.gender}, point: ${this.point}`;
+            // }
+            // stdArr[2].toString = function() {
+            //     return `name : ${this.name}, age: ${this.age}, gender: ${this.gender}, point: ${this.point}`;
+            // }
+            // stdArr[3].toString = function() {
+            //     return `name : ${this.name}, age: ${this.age}, gender: ${this.gender}, point: ${this.point}`;
+            // }
+
+            // 배열이름, 속성명, 리턴값 다 동일하고 위치값만 바뀜
+        
+            // 반복문이 0부터 배열 길이만큼 반복되도록
+            
+        }
+    </script>
+
+    <hr>
+
+    <h3>생성자 함수</h3>
+    <p>
+        new 키워드를 통해 객체를 생성할 수 있는 함수 <br>
+        (함수명 첫글자를 대문자로 작성한다)
+    </p>
+    <button onclick="test7();">실행</button>
+    <div class="area small" id="area7"></div>
+
+    <script>
+        // ---------------------------------- 정의 ----------------------------------
+        // 사람의 정보를 담는 객체 (생성자 함수)
+        function Person(name, age, gender, point) {
+            //생성자 함수 내에서 this는 생성될 객체를 가리킴
+
+            this.name = name;   // 현재 객체의 name 속성 (this.name) 
+                                // 전달받은 데이터 (name)
+            this.age = age;
+            this.gender = gender;
+            this.point = point;
+
+            // toString 메소드 추가
+            // 메소드 = 객체의 함수형태의 속성
+
+            this.toString = function() {
+                return `${this.name} _ ${this.age} _ ${this.gender} _ ${this.point}`;
+            }
+        }
+
+        function test7() {
+            const p1 = new Person("아이유", 20, "여", 100);
+            console.log(p1);
+
+            const p2 = new Person("공유", 40, "남", 100);
+            console.log(p2);
+
+            const area7 = document.getElementById("area7");
+            area7.innerHTML = p1.toString() + "<br>";
+            area7.innerHTML += p2;
+        }
+    </script>
+
+    <hr>
+
+    <h3>Date 내장 객체</h3>
+    <p>
+        날짜/시간 관련 객체
+    </p>
+
+    <button onclick="test8();">실행</button>
+    <div class="area big" id="area8"></div>
+
+    <script>
+        function test8() {
+            const area8 = document.getElementById("area8");
+
+
+            // Date 객체를 생성 => new 생성자)
+
+            const now = new Date();
+            area8.innerHTML = "현재 날짜 및 시간( getTime() ) : " + now.getTime() + "<br>";
+
+            // 특정 날짜를 전달할 때 Date(연, 월-1, 일);
+            const begin = new Date(2024, 12-1, 31);
+            area8.innerHTML += "2024년 12월 31일 날짜로 설정된 시간 : " + begin.getTime() + "<br>";
+
+            // const end = new Date(2025, 5, 18);
+            // area8.innerHTML += "종강 날짜 : " + end.getTime() + "<br>";
+
+            // 년월일 시분초로 출력
+            const end = new Date(2025, 5, 18, 13, 0, 0);    // Date(년, 월-1, 일, 시, 분, 초)
+            area8.innerHTML += "종강일 + 시간 : " + end.getTime() + "<br>";
+
+            /*
+             1s == 1000ms
+             5s == 5000ms
+             10s == 10000ms
+            */
+
+            area8.innerHTML += "<hr>";
+
+            area8.innerHTML += "현재 : " + now + "<br>";
+            area8.innerHTML += "개강일 : " + begin + "<br>";
+            area8.innerHTML += "종강일 : " + end + "<br>";
+
+            /* 
+                연도 : getFullYear() -> YYYY / 2025, 2024
+                월 : getMonth() +1   -> mm   / 1, 5, 12
+                일 : getDate()       -> dd   / 31, 12, 9
+                요일 : getDay()=>숫자타입 (0: 일요일 ~ 6: 토요일)
+                시 : getHours()       
+                분 : getMinutes()
+                초 : getSeconds()
+            */
+
+            area8.innerHTML += "연도 : " + end.getFullYear() + "<br>";
+            area8.innerHTML += "월 : " + (end.getMonth()+1) + "<br>";   // () 로 묶어주면 최우선 연산자가 됨. 묶어주지 않으면 문자열로 출력 됨
+            area8.innerHTML += "일 : " + end.getDate() + "<br>";
+            
+            area8.innerHTML += "시 : " + end.getHours() + "<br>";
+            area8.innerHTML += "분 : " + end.getMinutes() + "<br>";
+            area8.innerHTML += "초 : " + end.getSeconds() + "<br>";
+
+            area8.innerHTML += "요일 : " + end.getDay() + "<br>";
+            // 요일에 대한 정보를 반환해주는 함수
+        
+            area8.innerHTML += "요일 : " + getDayText2(end.getDay()) + " 요일 <br>";
+
+
+            area8.innerHTML += "<hr>";
+
+
+            // ---------------------------------------------------------------------------------
+            // 날짜 계산
+            // => 현재 기준으로 종강일까지 얼마나 남았는지? (일수)
+            area8.innerHTML += "종강일 - 현재날짜 : " + (end - now.getTime()) + "<br>";
+
+            // 1s == 1000ms == 1 * 1000
+            // 1m == 1s * 60 == 1 * 1000 * 60
+            // 1h == 1s * 60 == 1 * 1000 * 60 * 60
+            // 1d == 1h * 24 == 1 * 1000 * 60 * 60 * 24
+
+            area8.innerHTML += "남은 일수 : " + Math.round((end-now)/(1 * 1000 * 60 * 60 * 24)) + "<br>";
+        }   
+
+            function getDayText(dayNum) {
+            //     //  1) 조건문 사용하여 요일 정보 반환
+            //     //      => if문 / switch문
+            //     if (dayNum ==0){
+            //         return "일";
+            //     } else if (dayNum == 1) {
+            //         return "월";
+            //     } else if (dayNum ==2) {
+            //         return '화';
+            //     } else if (dayNum ==3) {
+            //         return '수';
+            //     }
+            // }
+            
+            switch(dayNum){
+                case 0 :
+                    return '일';
+                case 1 :
+                    return '월';
+                case 2 : 
+                    return '화';
+                case 3 :
+                    return '수';
+                case 4 : 
+                    return '목';
+                case 5 : 
+                    return '금';
+                case 6 :
+                    return '토';
+                };
+
+        }
+
+        function getDayText2(dayNum) {
+        // 배열을 사용하여 요일 정보 반환
+            const days = ['일','월','화','수','목','금','토'];
+            return days[dayNum];
+        }
+    
+    </script>
+</body>
+
+</html>

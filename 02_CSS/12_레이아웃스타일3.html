@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 레이아웃 스타일 (3)</title>
+    <style>
+        .container{
+            border: 3px solid salmon;
+
+            display: flex; /* 하위 요소들의 배치를 설정할 수 있음 */
+            flex-direction: row;/* row 기본 값 row, 
+            
+            /* 
+                flex-direction: row(수평) | row-reverse | column(수직) | column-reverse ; 
+                => 자식 요소들을 정렬할 때 주축을 어떤 방향으로 할 것인지에 대한 설정
+            */
+        }
+        .flex-item{
+            font-size: 30px;
+            padding: 20px;
+            border: 1px solid darkred;
+            width: 100px;
+            text-align: center;
+        }
+        .item1{background-color: red;}
+        .item2{background-color: orange;}
+        .item3{background-color: yellow;}
+        .item4{background-color: green;}
+        .item5{background-color: blue;}
+        .item6{background-color: purple;}
+
+        .container2{
+            border: 3px solid darkgray;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* 
+                flex-wrap: wrap;            
+                일정 크기보다 작아졌을 경우 요소가 사라지지 않고 다음 줄에 표시되도록 설정
+             */
+        }
+        .flex-item2{
+            font-size: 30px;
+            padding: 20px;
+            width: 100px;
+        }
+        .container3{
+            border: 3px solid blue;
+            height: 800px;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+            /* 주축(x) 정렬을 어떻게 할 것인지 설정 */
+            align-items: flex-start;
+            /* 교차축(y) 정렬을 어떻게 할 것인지 설정 */
+        }
+        .flex-item3{
+            font-size: 50px;
+            padding: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>flex 레이아웃</h1>
+    <p>
+        웹 페이지에서 레이아웃을 효율적으로 구성하기 위한 방법<br>
+        flexbox를 사용하면 요소들을 부모 요소(컨테이너)내에서 유연하게 정렬하고 배치할 수 있음
+    </p>
+
+    <div class="container">
+        <div class="flex-item item1" style="flex:1;">ITEM1</div>
+        <div class="flex-item item2" style="flex:1;">ITEM2</div>
+        <div class="flex-item item3" style="flex:1;">ITEM3</div>
+    </div>
+
+    <hr>
+
+    <div class="container2">
+        <div class="flex-item2 item1">ITEM1</div>
+        <div class="flex-item2 item2">ITEM2</div>
+        <div class="flex-item2 item3">ITEM3</div>
+        <div class="flex-item2 item4">ITEM4</div>
+        <div class="flex-item2 item5">ITEM5</div>
+        <div class="flex-item2 item6">ITEM6</div>
+    </div>
+
+    <hr>
+
+    <div class="container3">
+        <div class="flex-item3 item1">ITEM1</div>
+        <div class="flex-item3 item2">ITEM2</div>
+        <div class="flex-item3 item3">ITEM3</div>
+    </div>
+</body>
+
+</html>

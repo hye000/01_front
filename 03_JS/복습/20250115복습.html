@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습 - 25/01/15</title>
+
+    <style>
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .question-area {
+            border: 1px solid #655b50;
+            border-radius: 10px;
+            margin:1.1em;
+            padding: 2em;
+            box-shadow: 0px 0px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>25/01/15 복습</h1>
+    <h3>
+        문제를 확인한 후 스크립트로 복사하여 해결해보기
+    </h3>
+    <div class="wrap">
+        <div class="question-area">
+            <h3>연습 1) 출력 결과 예상하기</h3>
+            <pre>
+        function greet(name) {
+            return `안녕하세요, ${name}님!`;
+        }
+          
+        console.log(greet("버너스리"));
+            </pre>
+        </div>
+
+        
+        <script>
+            function greet(name) {
+            return `안녕하세요, ${name}님!`;
+        }
+          
+        console.log(greet("버너스리"));
+
+        // => 안녕하세요, 버너스리님!
+
+        </script>
+
+        <!-- --------------------------------------------------------------------- -->
+        <div class="question-area">
+            <h3>연습 2) 메소드 정의하기</h3>
+            <pre>
+                
+    const person = {
+        firstName: "홍",
+        lastName: "길동",
+        getFullName: function() {
+            // 여기에 코드를 작성하세요.
+        }
+    };
+        
+    console.log(person.getFullName()); // 출력: "홍 길동"                
+            </pre>
+        </div>
+
+        <script>
+                const person = {
+                    firstName: "홍",
+                    lastName: "길동",
+                    getFullName: function() {
+                        return `출력 : ${this.firstName} ${this.lastName} `
+                    }
+                };
+                    
+                console.log(person.getFullName()); // 출력: "홍 길동"
+
+        </script>
+
+
+
+        <!-- --------------------------------------------------------------------- -->
+        <div class="question-area">
+            <h3>연습 3) 객체 배열을 다루는 함수 만들기</h3>
+            <hr>
+            <code><b>HINT</b></code>  
+            <p>
+                cart에 저장된 객체 정보
+            </p>
+            <ul>
+                <li>제품명: name</li>
+                <li>가격: price</li>
+                <li>개수: quantity</li>
+            </ul>
+            <hr>
+            <code><b>CODE</b></code>    
+            <pre>
+    const cart = [
+        { name: "우유", price: 4700, quantity: 2 },
+        { name: "양파", price: 1000, quantity: 3 },
+        { name: "두부", price: 2500, quantity: 2 }
+    ];
+    
+    function getTotalPrice(shopList) {
+        // 여기에 코드를 작성하세요.
+    }
+    
+    console.log(getTotalPrice(cart)); // 출력: 17400    
+            </pre>
+        </div>
+
+
+        <script>
+
+            const cart = [
+                    { name: "우유", price: 4700, quantity: 2 },
+                    { name: "양파", price: 1000, quantity: 3 },
+                    { name: "두부", price: 2500, quantity: 2 }
+                ];
+                
+                function getTotalPrice(shopList) {
+                    //  shopList 변수는 cart변수의 데이터를 전달 받음 => 배열(Array)
+                    let total = 0;
+                    for(let i=0; i<shopList.length; i++) {  // 배열길이만큼 반복을 하려는데 위에서 shopList가 cart의 데이터를 받았으니 shopList를 사용함
+                        // 가격 정보 합하기
+                         total += shopList[i].price * shopList[i].quantity ;   // .price아니면 ['price']
+                    }
+                     return total;  
+                }
+                // 객체 정보가 배열인 것에 접근하기 위해서 먼저 배열 arr[i] 그 후 .name이나 ['name']을 통해 객ㅊ에 접근한다!
+                console.log(getTotalPrice(cart)); // 출력: 17400   
+
+        </script>
+
+
+        <!-- --------------------------------------------------------------------- -->
+        <div class="question-area">
+            <h3>연습 4) 생성자 함수 만들기</h3>
+            <p>=> 객체를 생성하기 위한 용도. 틀을 만들어 놓는 것.</p>
+            <hr>
+            <code><b>HINT</b></code>    
+            <section>
+                <article>
+                    <h4>속성</h4>
+                    <ul>
+                        <li><strong>value</strong>: 현재 계산기의 값을 나타내며 초기값은 0입니다.</li>
+                    </ul>
+                </article>
+                <article>
+                    <h4>메서드</h4>
+                    <p>=> 함수 형태를 띈 속성</p>
+                    <ul>
+                        <li><strong>add(number)</strong>: value에 number를 더합니다.</li>
+                        <li><strong>subtract(number)</strong>: value에서 number를 뺍니다.</li>
+                        <li><strong>reset()</strong>: value를 0으로 초기화합니다.</li>
+                        <li><strong>getValue()</strong>: 현재 value를 반환합니다.</li>
+                    </ul>
+                </article>
+            </section>
+            <hr>
+            <code><b>CODE</b></code>    
+            <pre>
+    function Calculator() {
+        // 여기에 코드를 작성하세요.
+    }
+
+    const calc = new Calculator();
+
+    calc.add(10);
+    console.log(calc.getValue()); // 출력: 10
+
+    calc.subtract(4);
+    console.log(calc.getValue()); // 출력: 6
+
+    calc.reset();
+    console.log(calc.getValue()); // 출력: 0                
+            </pre>
+        </div>
+
+        <script>
+
+                function Calculator() {
+                    this.value = 0;
+                    // this : 생성자 함수를 통해서 생성된 객체를 가리킨다
+                    // this.value => value 속성이 추가될 것.
+
+                    this.add = function(number) {
+                        // value 속성에 number 값을 더하기
+                        this.value += number;
+                        // this.value 에 this.value+number(매개변수로 전달 받은 값)를 대입하겠다.
+                    }
+
+                    this.subtract = function(number) {
+                        this.value -= number;
+
+                    }
+
+                    this.reset = function(number) {
+                        this.value = 0;
+                    }
+
+                    this.getValue = function() {
+                        return this.value;
+                    }
+                }
+
+                const calc = new Calculator();
+
+                calc.add(10);
+                console.log(calc.getValue()); // 출력: 10
+
+                calc.subtract(4);
+                console.log(calc.getValue()); // 출력: 6
+
+                calc.reset();
+                console.log(calc.getValue()); // 출력: 0  
+
+        </script>
+</body>
+
+</html>

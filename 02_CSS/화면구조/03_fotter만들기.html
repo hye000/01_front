@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>footer 만들기</title>
+
+    <style>
+        div{ border: 1px solid gray; box-sizing: border-box;}
+        #fotter{ width: 1000px; height: 200px;}
+
+        /* 여기서부터 fotter 관련 스타일 */
+        #fotter>div{width: 100%; padding-left: 50px;}
+        #fotter1{ height: 20%; background-color: #e6ebff;}
+        #fotter2{height: 80%;}
+
+        #fotter1>a{
+            text-decoration: none;
+            color: #6e6e6e;
+            font-size: 14px;
+            font-weight: bold;
+            vertical-align: middle;
+            margin: 15px;
+        }
+        #fotter1>a:hover{
+            color:blue;
+        }
+
+        #fotter2>p{
+            /* border: 1px solid blue; box-sizing: border-box; */
+            /* 여기서부터 적용할 스타일 */
+            width: 100%;
+            font-size: 12px;
+            color: #2c2c2c;
+            margin: 0;
+        }
+        #p1,#p3{height: 15%;}
+        #p2{height: 70%;}
+        #p3{text-align: center;}
+    </style>
+</head>
+
+<body>
+    <div id="fotter">
+        <div id="fotter1">
+            <a href="">이용약관</a> |
+            <a href="">개인정보처리방침</a> |
+            <a href="">인재 채용 문의</a> |
+            <a href="">훈련비 게시</a> |
+            <a href="">강사 구인</a>
+        </div>
+        <div id="fotter2">
+        <p id="p1">
+            KH정보교육원 ｜ 대표자 : 양진선 ｜ 책임자 : 최홍석 ｜ 개인정보관리책임자
+            : 양진선
+        </p>
+
+        <p id="p2">
+            강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F<br>
+            강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F<br>
+            강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F<br>
+            종로점 : 서울특별시 중구 남대문로 120 그레이츠 청계(구 대일빌딩) 2F, 3F<br>
+            당산점 : 서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F, 20F<br>
+            논현점 : 서울특별시 강남구 논현로 132길 9 마루빌딩 1F, 2F, 3F<br>
+            부산점 : 부산 부산진구 중앙대로 627 삼비빌딩 2F, 12F
+        </p>
+
+        <p id="p3">
+            Copyright © 1998-2025 KH Information Educational Institute All Right Reserved
+        </p>
+    </div>
+    </div>
+</body>
+
+</html>

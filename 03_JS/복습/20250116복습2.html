@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .question {
+            padding: 2em;
+            border: 1em solid slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>정규표현식 복습</h3>
+
+    <h4>다음 패턴들을 사용했을 때 해당 되는 것은?</h4>
+    <p class="question">/<span id="q1">^r</span>/</p>
+
+    <ol id="sel1">
+        <li>**relative</li>
+        <li>READY</li>
+        <li>for</li>
+        <li>while</li>
+        <li>from</li>
+    </ol>
+
+    <button onclick="check();">확인</button>
+    <script>
+        function check() {
+            document.querySelector().style.backgroundColor = "yellow";
+        }
+    </script>
+
+
+
+    <p class="question">/<span id="q2">e$</span>/</p>
+
+    <ol id="sel2">
+        <li>**relative</li>
+        <li>READY</li>
+        <li>for</li>
+        <li>**while</li>
+        <li>from</li>
+    </ol>
+
+    <button onclick="check2();">확인</button>
+    <script>
+        function check2() {
+            document.querySelector().style.backgroundColor = "pink";
+        }
+    </script>
+
+
+
+    <p class="question">/<span id="q3">^a..a$</span>/</p>
+
+    <ol id="sel3">
+        <li>**area</li>
+        <li>AREA</li>
+        <li>A&nbsp;&nbsp;A</li>
+        <li>**a&nbsp;&nbsp;a</li>
+        <li>apple</li>
+    </ol>
+
+    <button onclick="check3();">확인</button>
+    <script>
+        function check3() {
+            let list = document.querySelector("#sel3>*")
+            const regexp1 = /^a..a$/;
+            // for (  ){}
+        }
+    </script>
+
+
+
+    <p class="question">/<span id="q4">^[0-9]+$</span>/</p>
+
+    <ol id="sel4">
+        <li>**123</li>
+        <li>0-9</li>
+        <li>**2025</li>
+        <li>2025-01-16</li>
+        <li>0!0!</li>
+    </ol>
+
+    <button onclick="check4();">확인</button>   
+    <script>
+
+    </script> 
+</body>
+
+</html>

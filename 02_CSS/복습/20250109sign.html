@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20250109회원가입</title>
+
+    <!-- <link href="20250109_sign.css" rel="stylesheet"> -->
+    <style>
+        .signin{ width: 350px;
+            height: 450px;
+            /* border: 1px solid; */
+            border-radius: 2px;
+            padding: 10px;
+            background-color: #e7e7e7;
+            box-shadow: 0px 0px 5px 2px #adadad;
+            position:absolute;
+            top: 25%;
+            left: 45%;
+        }
+
+        input,a {display: block; margin:auto;}
+        
+        label {font-weight: 900; margin-left: 30px;}
+        h2 {margin-left: 30px;}
+        
+        input {width: 290px;
+            height: 25px;
+            border: 1px solid darkgray;
+            border-radius: 3px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        a{text-decoration: none;
+            color: black;
+            width: 300px;
+            height: 40px;
+            border: 1px solid #4343ff;
+            background-color: #4343ff;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            line-height: 2.5;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="signin">
+        <h2>회원가입</h2>
+        <form>
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name">
+            <label for="email">이메일</label>
+            <input type="email" name="email" id="email">
+            <label for="password1">비밀번호</label>
+            <input type="password" name="password1" id="password1">
+            <label for="password2">비밀번호 확인</label>
+            <input type="password" name="password2" id="password2">
+        </form>
+
+            <a href="20250109login.html">가입하기</a>
+        
+    </div>
+</body>
+</html>

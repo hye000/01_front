@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 자바스크립트의 그 외 특징들</title>
+</head>
+
+<body>
+    <h2>* 호이스팅 (hoisting)</h2>
+    <p>
+        모든 변수 선언문이 코드의 최상단으로 이동되는 것처럼 느껴지는 현상 <br>
+        <b>var</b> 타입에서 확인 되고, let/const 타입에서는 호이스팅 현상이 일어나지 않는 것처럼 동작되게 해준다.
+    </p>
+
+    <button onclick="hoisting();">확인</button>
+    <script>
+        function hoisting() {
+            // var 타입 확인
+            console.log(name);
+
+            var name = "아이유";
+            console.log(name);
+
+            // -------------------------
+
+            // console.log(name2);      // 오류 에러 발생
+            // let 타입 확인
+            let name2 = "공유";
+            console.log(name2);
+
+            // const 타입
+            console.log(name3);
+            const name3 = ("김태희");
+            console.log(name3);
+        }
+
+    </script>
+
+
+    <h2>* 스코프 (scope)</h2>
+    <p>
+        변수의 사용 가능 범위 <br>
+        - var : functional scope. <br>
+        변수가 선언된 함수 영역 내에서 사용 가능하다 <br>
+        - let, const : block scope. <br>
+        변수가 선언된 블록[{ }]내에서만 사용 가능 (자바와 유사함)
+    </p>
+
+    <button onclick="functionalScope();">확인 (var)</button>
+    <button onclick="blockScope();">확인 (let, const)</button>
+
+    <script>
+        function blockScope() {
+            if (true) {
+                let height = 160;
+                const blood = "O";
+
+                console.log(height);
+                console.log(blood);
+            }
+
+            console.log(height);
+            console.log(blood);     // if문 중괄호 블록 안에서 선언되었기 때문에 오류 발생함
+        }
+        function functionalScope() {
+            // var 타입 확인
+            var nick = "보라돌이";
+            console.log(nick);
+
+            // test1 함수 호출하기
+            test1();
+            // test1 함수 정의
+            function test1() {
+                console.log(nick);
+            }
+            // test2();
+            if (true) {
+                var age = 20;
+                // console.log(age);
+            }
+
+            console.log(age);
+
+            for (var i = 0; i < 5; i++) { }
+            console.log(i);
+        }
+
+
+        // 다른 영역의 함수를 호출함
+        function test2() {
+            console.log(nick);
+        }
+
+
+    </script>
+
+    <br><br>
+
+    <h2>* 전역변수, 지역변수</h2>
+    <p>
+        - 전역변수 : 특정 함수 영역 밖에 선언된 변수 (어디서든 사용 가능) <br>
+        - 지역변수 : 특정 범위 { } 내에 선언된 변수
+    </p>
+
+    <script>
+        // 전역 변수 선언
+        // => 함수 내에 선언하는 것이 아닌 함수 밖 스크립트 상에 선언한 변수
+        var declareVar = "var 타입으로 선언된 전역변수";
+        let declareLet = "let 타입으로 선언된 전역변수";
+        const declareConst = "const 타입으로 선언된 전역변수";
+
+        declareTemp = "그냥 선언한 전역변수";
+
+        onload = function () {
+            // 지역 변수 선언
+            // 함수 내에 변수를 선언하는 것
+            var declareVar = "var 타입으로 선언된 지역변수";
+            let declareLet = "let 타입으로 선언된 지역변수";
+            const declareConst = "const 타입으로 선언된 지역변수";
+
+            /* window. 이 앞에 생략됨*/declareTemp = "그냥 선언한 지역변수";
+
+            console.log(declareVar);
+            console.log(declareLet);
+            console.log(declareConst);
+            console.log(declareTemp);
+            // 전역변수와 지역변수의 이름이 동일한 경우 지역변수에서 찾아서 사용함
+
+            // 전역변수의 값을 사용하고자 할 경우
+            // window 객체(최상위 객체) 또는 this를 사용하여 접근 (함수 내에서 this를 사용하면 window 객체를 가리킴)
+            console.log(this.declareVar);
+            console.log(window.declareVar);
+
+            console.log(this.declareLet);
+            console.log(window.declareConst);
+            // let, const의 경우 전역변수로 접근이 불가능함 > undefined로 확인됨
+            // let, const 는 재사용이 불가능하기 때문에 같은 이름인 전역변수로 사용한 값을 지우고 지역변수의 값을 저장했을 것임.
+            // 그렇기 때문에 전역변수가 출력이 안 됨
+
+            console.log(window.declareTemp);
+            // 키워드(var, let, const) 없이 선언한 변수는 자동으로 전역변수로 선언이 됨
+
+            declareH = 'hhh';   // < ** 변수를 생략하면 함수 안에서 작성해도 전역변수가 됨!
+            console.log(declareH);
+            console.log(this.declareH);
+
+        }
+        
+        
+        
+    </script>
+
+    <hr>
+
+    <h2>* 배열 관련 메소드</h2>
+    <h4>배열.map()</h4>
+    <p>
+        배열 내의 모든 요소 각각을 함수의 결과 값으로 새로운 배열을 반환
+    </p>
+    <button onclick="mapTest();">확인</button>
+    <script>
+        function mapTest() {
+            let students = [
+                "아이유",
+                "홍길동",
+                "공유",
+                "디카프리오",
+                "수지"
+            ];
+
+            // 학생 이름이 4글자 이상인 경우 {이름} [유학생]으로 바꿔주고,
+            // 그렇지 않으면 {이름} [일반학생] 형태로 해서 새로운 배열을 생성
+
+            let newStds = [];
+            for (let std of students) {   //std가 각 배열을 순차적으로 접근
+                if (std.length >= 4) {
+                    newStds.push(std + "[유학생]");
+                } else {
+                    newStds.push(std + "[일반학생]");
+                }
+            }
+            console.log(newStds);
+
+
+            let newStds2 = students.map(function (std) {
+                if (std.length >= 4) {
+                    return std + "[유학생]";
+                } else {
+                    return std + "[일반학생]";
+                }
+            });
+            console.log(newStds2);
+        }
+    </script>
+
+    <h4>배열.filter(함수)</h4>
+    <p>
+        배열 내의 요소들을 주어진 함수에 의해 조건을 만족하는 항목만 모아 새로운 배열을 반환해준다.
+    </p>
+    <button onclick="filterTest();">확인</button>
+    
+    <script>
+        function filterTest() {
+            let numbers = [1, 50, 31, 27, 14, 6];
+
+            let newArr = [];
+            for(let n of numbers) {
+                // 짝수만 추가 2로 나눴을 때 나머지(%)가 ==0 일때
+                if(n%2 == 0) {
+                    newArr.push(n);
+                }               
+            } console.log(newArr);
+
+            let newArr2 = numbers.filter(function(n) {
+                return n%2 == 0;    // 새로운 배열에 포함할 조건을 return. true값이 되면 포함되고, false값이 되면 포함 안 됨
+            })
+            console.log(newArr2);
+
+            console.log(numbers.filter(n => n%2 == 0 ));
+        }
+    </script>
+
+    <h4>배열.reduce(함수)</h4>
+    <p>
+        배열 내의 요소들을 주어진 함수를 실행하고 하나의 결과 값을 반환해준다.
+    </p>
+    <button onclick="reduceTest();">확인(reduce)</button>
+
+    <script>
+        function reduceTest() {
+            let numbers = [1, 2, 3, 4, 5, 6, 7];
+
+            // 배열의 모든 요소들의 합
+            let total = 0;
+            for(let n of numbers) {
+                total += n;
+            }
+            console.log(total);
+            const total2 = numbers.reduce(function(prev, curr) {
+                // prev : 이전(인덱스)까지의 결괏값 (for문에서의 total의 역할)
+                // curr : 현재 인덱스 위치의 값 (for문에서의 n의 역할)
+                return prev + curr;
+            }, 0);
+            console.log(total2);
+            console.log( numbers.reduce((prev,curr) => prev + curr,0));
+        }
+    </script>
+
+</body>
+
+
+</html>

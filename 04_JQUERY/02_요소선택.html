@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 요소선택</title>
+
+    <!-- jQuery 연결 (CDN) 방식 -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+        <style>
+            .bg_pink{background-color: pink;}
+        </style>
+</head>
+
+<body>
+    <h1>요소 선택하기</h1>
+
+    <h3><i>기본 선택자</i></h3>
+    <h3>* 아이디 선택자</h3>
+    <p>id 값을 가진 특정 요소 <b>하나만</b> 선택</p>
+
+    <h1 id="id1">테스트1</h1>
+    <h2 id="id2">테스트2</h2>
+
+    <script>
+        // onload 시점
+        $(function () {
+            // #id1 요소의 글자색 변경
+            // #id2 요소의 내용 변경
+            // ------ 순수 자바스크립트 -----
+            document.getElementById("id1").style.color = "darkolivegreen";
+            document.querySelector("#id2").innerHTML = "내용 변경";
+
+            // ------ jQuery 방식 ------
+            // 메소드 호출
+            $("#id1").css("color", "orange");
+            $("#id2").html("안<mark>녕</mark>하세요");
+        });
+    </script>
+    <br>
+    <hr>
+
+    <h3>* 태그 선택자</h3>
+    <p>HTML</p>
+    <p>CSS</p>
+    <p>JavaScript</p>
+
+    <h5>Java</h5>
+    <h5>Oracle</h5>
+    <h5>JDBC</h5>
+
+    <script>
+
+        $(function () {
+            //  순수 자바 방식
+            let pList = document.querySelectorAll("p");
+            // [{},{},{},...]
+            for (let p of pList) {
+                p.style.color = "red";
+            }
+
+            // jQuery 방식
+            $("p").css('color', 'darkblue');
+
+            // 여러 종류의 요소 선택 가능
+            $("p,h5").css('backgroundColor', 'pink');
+
+        });
+    </script>
+
+    <br>
+    <hr>
+
+    <h3>* 클래스 선택자</h3>
+    <h1 class="cls">Class1</h1>
+    <h1 class="cls select">Class2</h1>
+    <h1 class="cls select">Class3</h1>
+
+    <script>
+        $(function () {
+            // 순수 자바 방식
+            const clsList = document.getElementsByClassName("cls");
+            /*   for(i=0; i<clsList.length; i++) {
+                    clsList[i].style.color = "green";
+                    clsList[i].onclick = function() {
+                    console.log("클릭됨!")};
+                }
+            */
+            for (let c of clsList) {
+                c.style.color = "darkgreen";
+                c.onclick = function () {
+                    console.log("클릭됨!");
+                }
+            }
+
+            $(".select").css('backgroundColor','yellowgreen');
+            // 클릭이벤트 추가 => .click(함수);
+            $(".select").click(function() {
+                alert("클릭됨ㅇ");
+            })
+
+        });
+    </script>
+
+    <hr>
+    
+    <table border="1">
+        <caption>요소 선택 방법</caption>
+        <tr>
+            <th> 순수 자바 스크립트 방식 </th>
+            <th> jQuery 방식 </th>
+        </tr>
+        <tr>
+            <td>document.getElementById("아이디값");<br>
+                document.querySelector("#아이디값");</td>
+            <td>$("#아이디값") </td>
+        </tr>
+        <tr>
+            <td>document.getElementsByClassName("클래스명"); <br>
+                document.querySelectorAll(".클래스명");</td>
+            <td>$(".클래스명")</td>
+        </tr>
+        <tr>
+            <td>document.getElementsByTagName("태그명"); <br>
+                document.querySelectorAll("태그명");</td>
+            <td>$("태그명");</td>
+        </tr>
+    </table>
+
+    <br><br>
+    
+    <table border="1">
+        <caption>* 선택된 요소의 속성값 변경 방법 *</caption>
+        <tr>
+            <th></th>
+            <th>순수 자바스크립트 방식</th>
+            <th>jQuery 방식</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>선택된 요소 객체의 속성에 직접 접근하여 대입한다</td>
+            <td>선택된 요소의 메소드를 이용한다</td>
+        </tr>
+        <tr>
+            <td>스타일</td>
+            <td>.style.스타일속성 = "변경할 값";</td>
+            <td>.css("스타일속성","변경할 값");</td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>.innerHTML = "변경할 값";</td>
+            <td>.html("변경할 값");</td>
+        </tr>
+        <tr>
+            <td>이벤트</td>
+            <td>.on이벤트명 = function(){ };</td>
+            <td>.이벤트명(function(){});</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>* input 요소 관련 선택자 *</h3>
+    텍스트 상자 : <input type="text"> <br>
+    일반 버튼 : <input type="button" value="클릭!"> <br>
+    체크 박스 : <input type="checkbox"> <br>
+    첨부 파일 : <input type="file"> <br>
+    비밀번호 : <input type="password"> <br>
+    라디오버튼 : <input type="radio"> <br>
+    초기화버튼 : <input type="reset"> <br>
+    제출버튼 : <input type="submit">
+
+    <script>
+        // onload = function() {} 랑 같은 것임
+        $(function() {
+           
+            // input 요소의 값 : 요소선택.value = '값';
+            // jQuery에서는 요소선택.val();
+
+            // input 태그의 type 속성이 text인 요소의 값 변경
+            $("input[type=text]").val("초기값!");
+
+            // input 태그의 type 속성이 radio인 요소
+            // 속성을 변경하고자 할 때 : .attr("속성명","변경할값");
+            $("input[type=radio]").attr("checked", true);
+
+            // 일반 버튼
+            // $("input[type=button]").width(100).height(100).val("BIG BUTTON");
+            $("input[type=button]").css({width : 100,height : 100}).val("BIG BUTTON");
+
+            // input 요소 타입 속성 별 접근 => : 타입속성값
+            $(":reset").css("backgroundColor","violet");
+            // $(":submit").css("backgroundColor","yellow");
+
+
+            // 첨부파일 버튼 배경 연두색
+            $(":file").css("backgroundColor","yellowgreen")
+
+            // 비밀번호 배경 파란색
+            $(":password").css("backgroundColor","skyblue");
+
+            // 체크박스 체크상태, 가로 50, 세로 50
+            // $(":checkbox").attr("checked",true)
+            //               .width(50).height(50);
+
+            // 초기화버튼 배경 하늘, 글자 흰색, 테두리 제거, 내용을 취소로 변경
+            $(":reset").css({backgroundColor :'skyblue', color:'white', border:'none'})
+                        .val("취소")
+
+            // 제출버튼 클릭시 'ㅋㅋ' 알림창 표시
+            $(":submit").click(function() {
+                alert("ㅋㅋ");
+            });
+ /*
+            // 제출 버튼 요소에 마우스가 올라왔을때 (들어왔을때)
+            $(":submit").mouseenter(function() {
+                // 해당 요소의 클래스 속성을 추가
+                $(this).addClass("bg_pink");
+                // 해당 요소에 bg_pink라는 클래스 추가
+            });
+
+            // 제출 버튼 요소에 마우스가 벗어났을 때 배경 변경
+            $(":submit").mouseout(function() {
+                $(this).removeClass("bg_pink");
+            });
+            */ 
+        
+
+            // hover : mouseenter 와 mouseout이 합쳐진 형태
+            $(":submit").hover(function() {
+                $(this).addClass("bg_pink");
+            }, function() {
+                $(this).removeClass("bg_pink");
+            });
+        });
+    </script>
+
+    <br><br>
+
+    취미 : 
+    <input type="checkbox" name="" id=""> 영화
+    <input type="checkbox" name="" id=""> 카페
+    <input type="checkbox" name="" id=""> 뜨개
+
+    <script>
+        $(function() {
+
+            // 체크된 상태의 요소에만 스타일 적용
+            // => 체크박스의 체크상태가 변경될 때 체크 여부에 따라 스타일 변경
+            
+            $(":checkbox").change(function() {
+                // 체크 여부 확인 => DOM 요소의 속성으로 접근 .prop()
+                if($(this).prop("checked")) {
+                    // $(this).prop("checked") => true 또는 false
+
+                    $(this).width(50).height(50);
+
+                } else{
+                    $(this).width('').height('');       // 빈 값으로 세팅을 하면 원래 요소가 갖고 있는 기본값으로 지정이 된다
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 애니메이션 관련 스타일3</title>
+    <style>
+        .rotate-box{
+            width: 100px; height: 100px;
+            border: 3px solid darkolivegreen;
+            background-color: brown;
+
+            display: inline-block;
+            transition: 1s ease-in-out;
+        }
+
+        .rotate-box:hover{
+            transform: rotate(45deg);
+            /* rotate: 45deg; */    /* x축 방향 회전 */
+            /* rotate: y 180deg; */      /* y축 방향 회전 */
+            /* rotate: 1 2 1 180deg; */     /* 3d 회전 (x,y,z 축) */
+        }
+    </style>
+</head>
+<body>
+    <h1>rotate</h1>
+    <p>요소를 회전시키는 기능</p>
+    <div class="rotate-box"></div>
+    <div class="rotate-box"></div>
+    <div class="rotate-box"></div>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 복습 - 2025/01/03</title>
+</head>
+<body>
+    <!-- 테이블 관련 연습 -->
+    <h2>회의 일정표</h2>
+    
+    <table border="1">
+        <tr>
+            <th rowspan="2">날짜</th>
+            <th rowspan="2">시간</th>
+            <th colspan="2">회의 내용</th>
+            <th rowspan="2">장소</th>
+        </tr>
+        <tr>
+            <th>주제</th>
+            <th>발표자</th>
+        </tr>
+        <tr>
+            <td rowspan="2">2025-01-10</td>
+            <td>10:00 ~ 11:00</td>
+            <td>팀 프로젝트 현황 보고</td>
+            <td>마이유</td>
+            <td rowspan=2>회의실 A</td>
+        </tr>
+        <tr>
+            
+            <td>11:00 ~ 12:00</td>
+            <td>UI/UX 디자인 리뷰</td>
+            <td>촤은우</td>
+        </tr>
+        <tr>
+            <td>2025-01-11</td>
+            <td>14:00 ~ 15:30</td>
+            <td colspan="2">부서 간 협업 방안 논의</td>
+            <td>회의실 B</td>
+        </tr>
+    </table>
+    
+    <!-- 하이퍼링크 연습 -->
+    <h2>즐겨찾기 모음</h2>
+    <ul>
+        <!-- 각 사이트를 새 탭으로 연결 -->
+        <li><a href="http://www.naver.com" target="_blank">네이버</a></li>
+        <li><a href="http://www.youtube.com" target="_blank">유튜브</a></li>
+    </ul>
+
+    <!-- 이미지 연습 -->
+    <h2>이미지 </h2>
+    <!-- 이미지 설명 추가 : "자연 이미지"-->
+    
+    <img src="https://images.unsplash.com/photo-1480497490787-505ec076689f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+         width="400" height="300"
+         alt="자연 이미지">
+
+    <h4>이미지에 하이퍼링크 추가</h4>
+    <!-- 연결할 주소 : https://unsplash.com, 새 탭으로 연결 -->
+    
+    <a href="https://unsplash.com" target="_blank">
+        <img src="https://images.unsplash.com/photo-1519455953755-af066f52f1a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0ZXJ8ZW58MHx8MHx8fDA%3D" alt="물 이미지" width="400" height="300">
+    </a>
+    
+    <!-- 영역 관련 연습 -->
+    <h2>영역</h2>
+    <div style="background-color: beige;">
+        여기는 블록 영역입니다.
+
+        <span style="background-color: hotpink;">인라인 1</span>
+        <span style="background-color: hotpink;">인라인 2</span>
+
+        여기는 다시 블록 영역 <br>
+        
+        <span style="background-color: blue; color:beige" >
+        여기는 인라인입니다. <br>
+        인라인은 콘텐츠 영역만큼만 차지하며, <br>
+        문장 단위로 영역을 지정합니다.
+        </span>
+        <br>
+        블록은 한 줄만큼 차지하며, <br>
+        사각형 박스로 영역을 지정합니다.
+    </div>
+</body>
+</html>

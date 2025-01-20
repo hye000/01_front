@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 선택자 우선순위</title>
+
+    <style>
+        h1 {background-color:cadetblue;}
+        h1 {background-color: cornflowerblue;}
+        
+
+        #id1{background-color: darkolivegreen;}
+
+        .class1{ background-color: lightblue;
+                color: black;
+        }
+        div {
+            background-color: brown !important ; /* !important : style 속성 값 뒤에 넣음*/
+            color:bisque;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h1>선택자 우선순위</h1>
+    <ul>
+        <li>기본적으로 위에서부터 아래로 적용됨</li>
+        <li>동일한 요소를 다양한 선택자로 css를 적용한 경우 우선순위에 따라 적용됨</li>
+        <li>
+            태그 선택자 < 클래스 선택자 < 아이디 선택자 < 인라인 스타일방식 < !improtant</li>
+    </ul>
+
+
+    <div id="id1" class="class1" style="background-color: dimgray;">
+        선택자 우선순위 테스트
+
+    </div>
+
+</body>
+
+</html>

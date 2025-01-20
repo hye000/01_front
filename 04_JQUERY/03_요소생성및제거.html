@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 요소 생성 및 제거</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <style>
+        .addItem {
+            color: darkgreen;
+        }
+
+        .area {
+            width: 200px;
+            height: 100px;
+            background-color: lemonchiffon;
+            color: darkblue;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .bgPink {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>요소 생성 및 제거</h1>
+
+    <h3>* 삽입 관련 메소드</h3>
+    <p>선택된 요소를 기준으로 새로운 요소를 추가하는 메소드</p>
+    <pre>
+        $(A).prepend(B) : A 요소 내의 앞부분에 B 요소를 추가하는 것(자손/하위)
+        $(A).append(B) : A 요소 내의 뒷부분에 B 요소를 추가하는 것(자손/하위)
+
+        $(A).before(B) : A 요소 전에 B 요소를 추가하는 것(동위)
+        $(A).after(B) : A 요소 다음에 B 요소를 추가하는 것(동위)
+    </pre>
+    
+    <h1 id="test1">
+        <span>A</span>
+    </h1>
+    <h1 id="test2">
+        <span>A</span>
+    </h1>
+    <h1 id="test3">
+        <span>A</span>
+    </h1>
+    <h1 id="test4">
+        <span>A</span>
+    </h1>
+
+    <script>
+        $(function() {
+            // id 속성이 test1인 요소 내의 뒷부분에 <span class="addItem">B</span>
+            $("#test1").append("<span class='addItem'>B1</span>");
+
+            $("#test2").prepend("<span class='addItem'>B2</span>");
+
+            $("#test3").after("<span class='addItem'>B3</span>");
+
+            $("#test4").before("<span class='addItem'>B4</span>");
+
+            // $("#test1").appendTo("<span>C</span>");    XX  들어갈 곳이(타겟이될요소) 없어서 사라짐!
+            // $(B).appendTo(A) : 선택된 요소B를 A에 추가
+            $("<span>C</span>").appendTo("#test3")
+        });
+    </script>
+
+    <hr>
+
+    <h3>* 제거 관련 메소드</h3>
+    <ul>
+        <li>$('선택자').empty() : 선택된 요소의 하위 요소를 제거해주는 메소드</li>
+        <li>$('선택자').remove() | detach() : 선택된 요소를 제거한 후 해당 요소를 반환해주는 메소드
+            <ul>
+                <li>.remove() : 제거된 요소의 이벤트를 가져오지 않는다</li>
+                <li>.detach() : 제거된 요소의 이벤트까지 가져온다</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h1 class="area" id="item1"><span>화이팅...</span></h1>
+
+    <button id="empty">제거1</button>
+    <button id="remove">제거2</button>
+    <button id="detach">제거3</button>
+    
+    <div id="result"></div>
+
+    <script>
+        $(function() {
+            // item1 마우스 오버관련 이벤트
+            $("#item1").hover(function() {
+                // 마우스가 요소에 올라왔을 때 bgPink 클래스 추가
+                $(this).addClass("bgPink");
+            }, function() {
+                $(this).removeClass("bgPink");
+            })
+
+            // [제거1] 버튼이 클릭되었을 때 #item1 의 하위 요소 제거 : empty
+            $("#empty").click(function() {
+                // #item인 요소 내용 제거
+                $("#item1").empty();
+            });
+
+            // [제거2] 버튼이 클릭되었을 때 #item 요소를 제거 후 반환된 객체를 변수에 저장
+            $("#remove").click(function() {
+                const item1 = $("#item1").remove();
+
+                //  #result 에 제거된 #item요소 추가하기
+                // 이벤트는 따로 가져오지 않음
+                $("#result").append(item1);
+                });
+
+                // [제거3]버튼 클릭시 #item1 요소 제거 후 #result 영역에 추가 (detach) 사용
+                $("#detach").click(function() {
+                    const item1 = $("#item1").detach();
+                    $("#result").append(item1);
+                    // detach는 이벤트 그대로 가져옴
+                });
+            
+        });
+    </script>
+</body>
+
+</html>

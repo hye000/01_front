@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제 답안 ver.</title>
+
+    <style>
+        #hob-table { min-width: 700px; }
+
+        #result { border: 1px solid red; min-width: 700px; height: 140px;}
+    </style>
+</head>
+
+<body>
+    <h1>Practice1</h1>
+
+    <fieldset>
+        <table id="hob-table">
+            <legend>취미</legend>
+
+            <tr>
+                <td>
+                    <input type="checkbox" name="hobby" 
+                           id="all" value="전체선택"
+                           onchange="allCheck();">
+                    <label for="all">전체선택</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-01" value="종합">
+                    <label for="cat-01">종합</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-02" value="소설">
+                    <label for="cat-02">소설</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-03" value="시/에세이">
+                    <label for="cat-03">시/에세이</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-04" value="경제/경영">
+                    <label for="cat-04">경제/경영</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-05" value="자기계발">
+                    <label for="cat-05">자기계발</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-06" value="아동">
+                    <label for="cat-06">아동</label>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-07" value="여행">
+                    <label for="cat-07">여행</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-08" value="과학">
+                    <label for="cat-08">과학</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-09" value="역사/문화">
+                    <label for="cat-09">역사/문화</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-10" value="외국어">
+                    <label for="cat-10">외국어</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-11" value="컴퓨터">
+                    <label for="cat-11">컴퓨터</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-12" value="만화">
+                    <label for="cat-12">만화</label>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br><br>
+
+    <button onclick="selectCategory();">카테고리 선택</button>
+    <div id="result"></div>
+
+    <script>
+        /*
+            전체 선택 체크박스의 상태가 변경될 때
+            나머지 체크박스의 상태를 변경
+            * 전체 선택 [] 상태가 체크된 상태 => 나머지도 체크 상태
+            *                    체크해제된 상태 => 나머지도 체크 해제 
+        */
+        function allCheck() {
+            // 전체선택 체크박스 요소 접근 -> id 속성 사용
+            const allChk = document.getElementById("all");
+            // allChk.checked; // 해당 요소의 체크 상태 (true/false)
+
+            // 나머지 체크박스 요소들에 접근 -> name 속성 사용
+            const hList = document.getElementsByName("hobby");
+            // => 배열 형태로 여러 개의 요소 정보를 저장
+            for(let h of hList) {
+
+                h.checked = allChk.checked;
+                // name 속성이 hobby인 요소(h)의 체크 상태(checked)를
+                // 전체 선택 요소(allChk)의 체크 상태(checked)와 
+                // 동일하게 변경
+            }
+        }
+    
+        /*
+            체크 상태가 변경될 때
+            전체선택 체크박스를 제외한 
+            모든 체크박스들이 체크된 경우 => 전체선택 체크박스를 체크 상태로 변경
+            하나라도 체크 해제된 체크박스가 있는 경우 => 전체선택 체크박스를 체크 해제 상태로 변경
+        */
+        function checkboxTrigger() {
+            let isChecked = true;       // 전체 선택 체크박스의 상태를 변경할 값
+
+            // 나머지 체크박스 요소들에 접근 -> name 속성 사용
+            const hList = document.getElementsByName("hobby");
+
+            for(let h of hList) {
+                if (h.value == "전체선택") {
+                    continue;
+                }
+
+                if (h.checked == false) {
+                    // 체크 해제된 체크박스가 있는 경우
+                    // 전체 선택 체크박스의 값을 변경할 변수 false로 변경
+                    isChecked = false;
+                    break;
+                }
+            }
+
+            // 전체선택 체크박스의 상태를 변경
+            document.getElementById("all").checked = isChecked;
+        }
+   
+        /*
+            [카테고리 선택] 버튼이 클리되었을 때
+            체크된 상태의 취미 정보를 빨간 테두리 영역 안에
+            공백으로 구분하여 출력
+        */
+        function selectCategory() {
+            // 체크 박스 요소들에 접근 -> name 속성 사용
+            const hList = document.getElementsByName("hobby");
+
+            let result = "";    // 체크된 항목의 값을 저장할 변수
+
+            for(let h of hList) {
+                // 전체 선택인 경우 넘어가도록 처리
+                if ( h.value == "전체선택" ) {
+                    continue;
+                }
+
+                // 체크가 된 상태인 경우 값을 result 변수에 저장
+                if ( h.checked ) { // h.checked == true
+                    result = result + " " + h.value;
+                }
+            }
+
+            // 결과를 화면에 출력
+            //  => 결과를 result라는 변수에 차곡차곡 저장해둠!
+            document.getElementById("result").innerText = result;
+
+        }
+   </script>
+</body>
+
+</html>

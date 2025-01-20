@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 목록 관련 스타일</title>
+
+    <style>
+        #ul1 {
+            list-style-type : disc;
+            list-style-type:circle;
+            list-style-type: square;
+            list-style-type: none;
+            list-style-image: url("resources/images/flower-pot.png") ;
+            list-style-position: inside;
+            
+        }
+
+        #ol1 {
+            list-style-type: decimal; /* 기본 값 */
+            list-style-type: decimal-leading-zero; /* 숫자 앞에 0이 붙음 */
+
+            list-style-type: lower-alpha;
+            list-style-type: upper-alpha;
+
+            list-style-type: lower-roman;
+            list-style-type: upper-roman;
+
+            list-style-position: inside;
+        }
+    </style>
+</head>
+<body>
+    <h1>목록 관련 스타일 (list~)</h1>
+
+    <h3>list-style-type : 불릿 기호를 변경하고자 할 때 사용</h3>
+    <h3>list-style-image : 불릿 기호에 이미지를 적용하고자 할 때 사용</h3>
+    <h3>list-style-position : 불릿 기호의 위치를 조정하고자 할 때 사용</h3>
+    <pre>
+        *순서 없는 목록(ul)
+        선택자 {
+            list-style-type : disc | circle | square | none;
+            list-style-image : url("적용하고자 하는 이미지 경로");
+            list-style-position : inside | outside;
+        }
+        
+        *순서 있는 목록(ol)
+        선택자{
+            list-style-type : decimal | decimal-leading-zero;
+            list-style-type : lower-alpha | upper-alpha;
+            list-style-type : lower-roman | upper-roman;
+        }
+    </pre>
+
+    <h4>순서 없는 목록</h4>
+    <ul id="ul1">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Oracle</li>
+        <li>Java</li>
+    </ul>
+
+
+    <h4>순서 있는 목록</h4>
+    <ol id="ol1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+
+    
+</body>
+</html>

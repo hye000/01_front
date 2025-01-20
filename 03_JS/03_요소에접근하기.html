@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 요소에 접근하기</title>
+
+    <style>
+        .area {
+            border: 2px solid salmon;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML 요소에 접근하기</h1>
+    <h2>(해당 요소의 객체를 가져오는 것)</h2>
+
+    <h3>1) id 속성을 사용하여 요소 가져오기</h3>
+    <p>
+        document.getElementById("아이디명") <br>
+        => 해당 요소객체 반환
+    </p>
+    <!-- onclick에 함수 선언, 그 이름으로 된 함수가 있어야지 작동함, 함수는 이름에 ()소괄호가 무조건 포함 -->
+    <button onclick="accessId();">아이디로 접근</button>
+    <div id="area1" class="area">1번 영역</div>
+
+    <script>
+        function accessId() {
+            // "area1" 이라는 아이디 속성을 가진 요소 접근
+            // [let 변수명 = ] 접근한 요소의 기능을 사용하기 위해 변수에다가 저장하는 것.
+            // 선택된 요소의 속성값을 조회하거나 변경하고자 할 때
+            //  선택된요소.속성명
+            let area1El = document.getElementById("area1");
+
+            // 선택된 요소의 내용 변경
+            // input태그 -> value 속성 사용
+            // 그 외의 태그 -> innerHTML, innerText 속성 사용
+
+            // area1El.innerHTML = 
+
+            // area1El.innerHTML = area1El.innerHTML + "<br>아이디로 접근 성공!"
+            area1El.innerHTML += "<br>아이디로 접근 성공!"
+            // =>복합 대입 연산자
+
+            // css 관련 속성 : style
+            area1El.style.color = "orange"; //글자색 변경 .color
+
+            if(area1El.style.backgroundColor == "skyblue") {
+                area1El.style.backgroundColor = "yellow";
+            } else{
+                area1El.style.backgroundColor = "skyblue"; //배경색변경 .backgroundColor
+        }
+
+        // 가로길이 100px
+        // 세로길이 200px
+
+            area1El.style.width = '100px';
+            area1El.style.height = "200px"; //문자는 무조건 '작은 따옴표'나 "큰 따옴표"로 감싸줘야함
+
+            }
+            
+
+    </script>
+
+    <h3>2) 태그명으로 요소 가져오기</h3>
+    <p>
+        document.getElementsTagName("태그명"); <br>
+        => 선택된 요소 객체들이 배열 형태로 반환
+    </p>
+
+    <button onclick="accessTagName();">태그명으로 접근</button>
+    <ul>
+        <li>ITEM1</li>
+        <li>ITEM2</li>
+        <li>ITEM3</li>
+        <li>ITEM4</li>
+        <li>ITEM5</li>
+    </ul>
+
+    <script>
+        function accessTagName() {
+            let list = document.getElementsByTagName("li")
+            // => [li, li, li, ...]
+            console.log(list);
+
+            console.log(list.length);
+            // 배열의 길이 -> 몇 개의 데이터를 가지고 있는가
+
+            console.log(list[0]);
+            // 첫 번째 위치의 데이터(요소 객체)
+
+
+            // "ITEM1" <-- 첫 번째 li 요소의 내용 (content)
+            console.log(list[0].innerHTML);
+            // "ITEM1" <-- 네 번째 li 요소의 내용 (content)
+            console.log(list[3].innerText);
+
+            // n번째 리스트의 내용을 바꾸고 싶을 때 등호(=)사용후 우변에 "변경할 값"; 작성
+            /* list[0].innerText = "1번째 li 요소입니다";
+            list[1].innerText = "2번째 li 요소입니다";
+            list[2].innerText = "3번째 li 요소입니다";
+            list[3].innerText = "4번째 li 요소입니다";
+            list[4].innerText = "5번째 li 요소입니다"; */
+
+            // i(숫자) 값이 0부터 시작해서 5보다 작을때까지 1씩 증가하는 반복문
+            for(let i = 0; i < 5; i++) {
+                list[i].innerText = (i+1) + "번째 li 요소입니다";
+            }
+        }
+
+    </script>
+
+    <br>
+    <h3>3) name 속성을 이용하여 요소 가져오기</h3>
+    <p>document.getElementsByName("네임명");<br>
+        => 선택된 요소 객체들이 배열 형태로 반환</p>
+    <form action="">
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" 
+                    name="hobby" value="all" id="all"
+                    onchange="allcheck();">
+            <label for="all">전체선택</label>
+
+            <input type="checkbox"  
+                name="hobby" value="music" id="music"
+                onchange="checkBoxTrigger();">
+            <label for="music">음악 감상</label>
+
+            <input type="checkbox"  
+                name="hobby" value="movie" id="movie"
+                onchange="checkBoxTrigger();">
+            <label for="movie">영화 감상</label>
+
+            <input type="checkbox"  
+                name="hobby" value="youtube" id="youtube"
+                onchange="checkBoxTrigger();">
+            <label for="youtube">유튜브</label>
+        </fieldset>
+    </form>
+
+    <script>
+        function allcheck() {
+            // 전체 선택 체크박스의 상태가 변경되었을 때 이벤트 처리
+
+            // 1. all이라는 id 속성을 가진 요소를 가져오기
+            let all = document.getElementById("all");
+            // 체크된 상태 조회 : checked
+            console.log(all.checked);
+
+            // hobby라는 name 속성을 가진 요소를 가져오기
+            let hobbyList = document.getElementsByName("hobby");
+
+            // 조회된 요소들을 각각 '전체선택' 체크박스의 체크상태값으로 checked 속성 변경
+            /*
+            hobbyList[0].checked = all.checked;
+            hobbyList[1].checked = all.checked;
+            hobbyList[2].checked = all.checked;
+            hobbyList[3].checked = all.checked;
+            */
+
+            // hobbyList => [chkbox, chkbox, chkbox, ...]
+            for(let checkbox of hobbyList) {   
+                //배열(리스트)에서 첫번째 위치부터 마지막 위치까지 순서대로 접근하는 방법
+                checkbox.checked = all.checked;
+            }
+        }
+
+        function checkBoxTrigger() {
+
+            /* checkbox 요소의 checked 속성
+                - true : 체크된 상태
+                - false : 체크 해제된 상태
+            */
+            // 취미 관련된 항목의 체크박스 상태가 변경되었을 때 이벤트 처리
+            //   => 모두 체크되었을 때 "전체 선택" 체크박스도 체크되도록
+            //      -> 모든 체크박스들의 상태가 true일 때 => true로 변경
+            //      그렇지 않으면 체크 해체 되도록 처리
+            //      -> 하나라도 체크가 해제된 상태가 있을 때 (false) => false로 변경
+
+            let allChecked = true;
+
+            // name 속성으로 체크박스 요소들에 접근
+            let hobbyList = document.getElementsByName("hobby");
+
+            for(let hobby of hobbyList) {
+                // hobby 변수 -> input 요소
+                console.log(hobby.value);       //값 조회
+
+            if (hobby.value == "all") {
+                // 현재 요소의 값이 all일때만 실행
+                continue;       //현재 기준 아래 코드를 실행하지 않고 다음 요소로 이동
+            }
+                // 이 위치로 왔다는 것은, 현재 요소의 값이 "all"이 아닌 경우
+                
+                // 현재 요소의 체크 상태가(hobby.checked) false인 경우 allChecked 변수의 값을 false로 변경
+                if (hobby.checked == false) {
+                    // 해석 : 만약 현재 요소의 체크상태가 false와 같다면 (==두개는 비교)
+                    allChecked = false;
+                    // 해석 : allChecked의 값을 false로 변경 (=한개는 변경)
+                }
+
+                // 이 위치에서는 allChecked 값이 true 또는 false일 것임!
+            }
+
+            // 확인 결과에 따라 "전체선택" 체크박스의 상태 변경
+
+            document.getElementById("all").checked = allChecked;
+
+        }
+    </script>
+
+    <br><br>
+
+    <h3>4) class 속성을 이용하여 요소 가져오기</h3>
+    <p>
+        document.getElementsByClassName("클래스명");<br>
+        => 선택된 요소 객체들이 배열 형태로 반환
+    </p>
+
+    <div class="test"></div>
+    <p class="test"></p>
+    <ul class="test">
+        <li></li>
+        <li></li>
+    </ul>
+    <pre class="test test1 test2"></pre>
+    <button onclick="accesClass();">class로 접근</button>
+
+    <script>
+        function accesClass() {
+            // class 속성의 값이 'test'인 요소들에 접근하기
+            let testList = document.getElementsByClassName("test");
+            console.log(testList);
+
+            for(let test of testList) {
+                // 내용 변경 --> innerHTML, innerText 사용
+                test.innerHTML = "test class를 가진 요소";
+            }
+        }
+    </script>
+
+    <br><br>
+
+    <h3>5) 내 마음대로 자유롭게 접근 (선택자 활용)</h3>
+    <p>
+        선택자를 이용하여 요소에 접근할 때        <br>
+        * document.querySelector("선택자");      <br>
+        => 선택자에 해당하는 요소 하나만 반환 (선택자 기호까지)       <br><br>
+        
+        * document.querySelectorAll("선택자");      <br>
+        => 선택자에 해당하는 요소 모두를 배열 형태로 반환
+    </p>
+
+    <div id="tmp1">
+        안녕하세요
+        <h3>오늘은 금요일</h3>
+    </div>
+    <div id="tmp2">
+        <h3>웹 표준의 정석</h3>
+        <h3>이벤트 처리</h3>
+        <span>숏박스</span>
+    </div>
+    <h3>김원훈</h3>
+    <br>
+    <button onclick="accesSelector();">내 마음대로 접근</button>
+
+    <script>
+        function accesSelector() {
+            // * "tmp1"라는 id속성을 가진 요소에 접근
+            let tmp1 = document.querySelector("#tmp1 > h3"); //
+            console.log(tmp1);
+
+            // * "tmp2"라는 id속성을 가진 요소 내의 h3요소들에 접근
+            let h3List = document.querySelectorAll("#tmp2 > h3");
+            console.log(h3List);
+
+            // * "숏박스"라는 내용을 "재밌는 숏박스" 내용으로 변경
+            let shortBox = document.querySelector("#tmp2 > span");
+            shortBox.innerHTML = "재밌는 숏박스";
+            // document.querySelector("#tmp2 > span").innerHTML = "재밌는 숏박스";  ==> 꼭 변수 선언 안 하고 한 줄로 표시해도 됨
+
+
+            // * "김원훈"내용을 "출연자 : 김원훈"으로 변경
+            document.querySelector("#tmp2 + h3").innerHTML = "출연자 : 김원훈" ;
+        }
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

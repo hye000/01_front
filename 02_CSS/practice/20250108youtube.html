@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유튜브 ui 연습</title>
+
+    <style>
+        /* .header>div {  border: 1px solid red; }
+
+        .content>div { border: 1px solid blue; } */
+
+        /* 여기서부터 적용 */
+
+
+        body {
+            font-family: 굴림체;
+        }
+
+        .wrap {
+            width: 1200px;
+            height: 780px;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+
+
+        .header,
+        .content {  width: 100%; }
+
+        .header {  height: 10%; }
+
+        .content { height: 90%; }
+
+        /* head 부분 */
+
+        .header>div {
+            height: 100%;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        #head1 { width: 12%; }
+
+        #head2 { width: 76%; }
+
+        #head3 { width: 12%  }
+
+
+        .header>:nth-child(1) {
+            color: #000000;
+            text-align: center;
+            line-height: 4.5;
+        }
+
+        .header>:nth-child(1):hover {
+            cursor: pointer;
+        }
+
+        /* 검색창 */
+        .header>:nth-child(2) {
+            text-align: center;
+            line-height: 4.5;
+            height: 100%;
+        }
+
+        form>#search {
+            width: 500px;
+            height: 30px;
+            border-radius: 40px;
+            border: 1px solid gray;
+        }
+
+        form>:nth-child(2) {
+            height: 30px;
+            border-style: none;
+            border-radius: 40px;
+            line-height: 4.5px;
+        }
+
+        form>:nth-child(3) {
+            height: 30px;
+            border-style: none;
+            border-radius: 40px;
+            line-height: 4.5px;
+        }
+
+
+        /* 로그인 */
+        .header>:nth-child(3) {
+            text-align: center;
+            line-height: 4.5;
+        }
+
+        .header>:nth-child(3):hover {
+            cursor: pointer;
+        }
+
+        form>a {
+            color: black;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+
+
+
+        /* content 부분 */
+
+        .content>div {
+            height: 100%;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        .con1 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .con2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .con1 {
+            width: 12%;
+        }
+
+        .con2 {
+            width: 88%;
+        }
+
+        .menu1 {
+            margin: 35px 0px 100px 0px;
+        }
+
+        .menu1>a {
+            color: #000000;
+            text-decoration: none;
+            display: block;
+            margin: 5px;
+        }
+
+        .menu2>p {
+            color: #000000;
+            margin: 10px;
+            font-size: 14px;
+        }
+
+        .menu3 {
+            margin: 60px 0px 100px 0px;
+        }
+
+        .menu3>a {
+            color: #000000;
+            text-decoration: none;
+            display: block;
+            margin: 5px
+        }
+
+        /* thumbnail 부분 */
+        .thumbnail {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .thumbnail>a {
+            color: #000000;
+            text-decoration: none;
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            text-align: center;
+            line-height: 20;
+            border: 1px dotted gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <div id="head1">▶ Youtube</div>
+            <div id="head2">
+                <form action="youtubetest">
+                    <input type="text" name="search" placeholder="   검색" id="search">
+                    <input type="submit" value="🔍">
+                    <input type="submit" value="🎤">
+                </form>
+            </div>
+            <div id="head3">
+                <form>
+                    <a href="">로그인</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- 내용 -->
+        <div class="content">
+            <div class="con1">
+                <div class="menu1">
+                    <a href="">🏠 홈</a>
+                    <a href="">⏩ Shorts</a>
+                    <a href="">📂 구독</a>
+                    <a href="">🆔 내 페이지</a>
+                    <a href="">🔄 시청 기록</a>
+                </div>
+
+                <div class="menu2">
+                    <p>로그인을 하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수 있습니다.</p>
+                </div>
+
+                <div class="menu3">
+                    <a href="">🔍 탐색</a>
+                    <a href="">📈 인기 급상승</a>
+                    <a href="">🛒 쇼핑</a>
+                    <a href="">🎵 음악</a>
+                    <a href="">🎬 영화</a>
+                    <a href=""> 실시간</a>
+                    <a href="">🎮 게임</a>
+                    <a href="">⚾ 스포츠</a>
+                </div>
+            </div>
+
+            <div class="con2">
+                <div class="thumbnail">
+                    <a href="">썸네일1</a>
+                    <a href="">썸네일2</a>
+                    <a href="">썸네일3</a>
+                    <a href="">썸네일4</a>
+                    <a href="">썸네일5</a>
+                    <a href="">썸네일6</a>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

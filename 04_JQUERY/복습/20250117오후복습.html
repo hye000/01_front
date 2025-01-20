@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-01-17 복습 페이지</title>
+
+    <style>
+        .area {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background: black;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h1>jQuery를 사용하여 아래 문제를 해결해보기</h1>
+    <hr>
+    <h3>* 선택된 색상으로 배경색 변경 *</h3>
+    <div id="area1" class="area"></div>
+
+    <input type="color" id="selColor">
+    <!-- [참고] .val() : value 속성 관련 메소드 -->
+    <button id="btnChange">변경</button>
+    <!-- 버튼 클릭 시 선택된 색상으로 #area1 요소의 배경색 변경 -->
+
+    <hr><br><br>
+    <h3>* 버튼에 따른 크기조절 *</h3>
+
+    <div id="area2" class="area"></div>
+    <button onclick="halfSize();">50x50</button>
+    <button onclick="defaultSize();">원본(100x100)</button>
+    <button onclick="doubleSize();">200x200</button>
+
+    <script>
+        $(function () {
+            $("#btnChange").click(function () {
+                $("#area1").css("backgroundColor", $("#selColor").val());
+                // const color =  $("#selColor).val();  변수에 담아서 사용해도 됨
+            });
+        });
+
+        function halfSize() {
+            // $("#area2").css("width", "50px")
+            //             .css("height", " 50px");
+            //  $("#area2").width(50).height(50);
+            
+        }
+
+        function defaultSize() {
+            $("#area2").css("width", "100px");
+            $("#area2").css("height", "100px");
+        }
+
+        function doubleSize() {
+            $("#area2").css("width", "200px");
+            $("#area2").css("height", "200px");
+        }
+
+
+    </script>
+
+</body>
+
+</html>

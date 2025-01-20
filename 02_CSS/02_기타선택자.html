@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 기타 선택자</title>
+
+    <link href="resources/css/02_style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h2>속성 선택자</h2>
+    <ul>
+        <li>선택하고자 하는 요소에 작성되어 있는 속성을 이용해서 선택하는 방법</li>
+        <li>선택자 뒤에 [ ]를 이용해서 속성과 속성값을 제시하여 선택</li>
+    </ul>
+    <pre>
+        * 키워드 : 속성값
+
+        키워드가 속성값과 일치하는 경우 : 선택자[속성명=키워드]
+        키워드가 포함되어 있는 경우 (전체단어) : 선택자[속성명~=키워드]
+        키워드가 포함되어 있는 경우 : 선택자[속성명*=키워드]
+
+        키워드로 시작하는 경우 (전체단어 또는 단어 다음에 -가 있는 경우) : 선택자[속성명|=키워드]
+        키워드로 시작하는 경우 : 선택자[속성명^=키워드]
+
+        키워드로 종료하는 경우 : 선택자[속성명$=키워드]
+    </pre>
+    <!-- .div-class*4 -->
+    <div class="div-class" name="name1"> TEXT</div>
+    <div class="div-class" name="name2"> TEXT</div>
+    <div class="div-class" name="name3 name1"> TEXT</div>
+    <div class="class-div" name="name3">TEXT</div>
+
+    <hr>
+
+    <h2>자손 선택자와 후손 선택자</h2>
+    <ul>
+        <li>중첩된 요소들 기준으로 선택 가능</li>
+        <li>자손 : 바로 하위에 있는 요소들</li>
+        <li>후손 : 하위 요소 모두</li>
+    </ul>
+
+    <pre>
+        * 자손 선택자 : >
+        a > b {
+            스타일속성: 값;
+        } /* a 요소의 자손 요소 b*/
+        
+        * 후손 선택자 : 공백(띄어쓰기)
+        a b {
+            스타일속성: 값;
+        } /* a 요소의 후손 요소 b */
+    </pre>
+
+    <div id="parent">
+        <h4>div 요소의 자손이면서 후손</h4>
+        <h4>div 요소의 자손이면서 후손</h4>
+        <ul>div 요소의 자손이면서 후손
+            <li>ul 요소의 자손이고, div 요소의 후손</li>
+            <li>ul 요소의 자손이고, div 요소의 후손</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>동위(같은 레벨) 선택자</h2>
+    <ul>
+        <li>동위관계에 있는 특정 요소를 선택할 때 사용</li>
+        <li>선택되는 요소가 뒤에 위치하는 경우</li>
+    </ul>
+    <pre>
+        * a 요소 바로 뒤에 있는 b 요소 하나만을 선택
+        a + b {
+            스타일속성: 값;
+        }
+
+        * a 요소 뒤에 모든 b 요소 선택
+        a ~ b {
+            스타일속성: 값;
+        }
+    </pre>
+
+    <div id="sibling">A 영역</div>
+    <div>B 영역</div>
+    <div>C 영역</div>
+    <div>D 영역</div>
+    <ul>E 영역</ul>
+    <div>F 영역</div>
+
+    <hr>
+
+    <h2>상태 선택자</h2>
+    <h4>요소의 상태에 따라 선택되는 선택자</h4>
+
+    <p>(1) 체크된 상태의 요소</p>
+    <pre>
+        선택자:checked {
+            스타일속성: 값;
+        }
+    </pre>
+
+    <input type="checkbox" id="apple">
+    <lbael for="apple">사과</lbael>
+    <input type="checkbox" id="banana">
+    <lbael for="banana">바나나</lbael>
+
+    <p>(2) 초점이 맞춰진 모습</p>
+    <pre>
+            선택자:focus {
+                스타일속성: 값;
+            }
+        </pre>
+
+    아이디 : <input type="text" name="userId"><br>
+    비밀번호 : <input type="password" name="userPw">
+
+    <p>(3) 활성 / 비활성 되어 있는 요소 선택</p>
+    <pre>
+        *활성화된 요소
+        선택자:enabled {스타일속성: 값;}
+
+        *비활성화된 요소
+        선택자:disabled {스타일속성: 값;}
+    </pre>
+
+    <button>활성 버튼(클릭 가능)</button>
+    <button disabled>비활성 버튼(클릭 불가)</button>
+
+    <hr>
+
+    <h2>반응 선택자</h2>
+    <p>사용자의 움직임에 따라 선택되는 선택자</p>
+
+    <pre>
+        *해당 요소가 클릭되었을 경우
+        선택자:active {스타일속성: 값;}
+
+        *해당 요소에 마우스가 올라간 경우
+        선택자:hover {스타일속성: 값;}
+    </pre>
+    <!-- .area*2 -->
+    <div class="area" id="active-test">
+        activeTest
+    </div>
+    <br><br>
+    <div class="area" id="hover-test">
+        hoverTest
+    </div>
+
+
+</body>
+
+</html>

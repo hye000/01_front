@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제 답안 ver.</title>
+
+    <style>
+        #hob-table { min-width: 700px; }
+
+        #result { border: 1px solid red; min-width: 700px; height: 140px;}
+    </style>
+</head>
+
+<body>
+    <h1>Practice1</h1>
+
+    <fieldset>
+        <table id="hob-table">
+            <legend>취미</legend>
+
+            <tr>
+                <td>
+                    <input type="checkbox" name="hobby" 
+                           id="all" value="전체선택"
+                           onchange="allCheck();">
+                    <label for="all">전체선택</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-01" value="종합">
+                    <label for="cat-01">종합</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-02" value="소설">
+                    <label for="cat-02">소설</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-03" value="시/에세이">
+                    <label for="cat-03">시/에세이</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-04" value="경제/경영">
+                    <label for="cat-04">경제/경영</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-05" value="자기계발">
+                    <label for="cat-05">자기계발</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-06" value="아동">
+                    <label for="cat-06">아동</label>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-07" value="여행">
+                    <label for="cat-07">여행</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-08" value="과학">
+                    <label for="cat-08">과학</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-09" value="역사/문화">
+                    <label for="cat-09">역사/문화</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-10" value="외국어">
+                    <label for="cat-10">외국어</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-11" value="컴퓨터">
+                    <label for="cat-11">컴퓨터</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" onchange="checkboxTrigger();" id="cat-12" value="만화">
+                    <label for="cat-12">만화</label>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br><br>
+
+    <button onclick="selectCategory();">카테고리 선택</button>
+    <div id="result"></div>
+
+    <script>
+        
+        function allCheck() {
+            
+            const allChk = document.getElementById("all");
+            
+            const hList = document.getElementsByName("hobby");
+            
+            for(let h of hList) {
+
+                h.checked = allChk.checked;
+                
+            }
+        }
+    
+        
+        function checkboxTrigger() {
+            let isChecked = true;       
+
+            
+            const hList = document.getElementsByName("hobby");
+
+            for(let h of hList) {
+                if (h.value == "전체선택") {
+                    continue;
+                }
+
+                if (h.checked == false) {
+                    isChecked = false;
+                    break;
+                }
+            }
+
+            
+            document.getElementById("all").checked = isChecked;
+        }
+   
+
+        function selectCategory() {
+            
+            const hList = document.getElementsByName("hobby");
+
+            let result = "";
+
+            for(let h of hList) {
+                
+                if ( h.value == "전체선택" ) {
+                    continue;
+                }
+
+                
+                if ( h.checked ) { 
+                    result = result + " " + h.value;
+                }
+            }
+
+            
+            document.getElementById("result").innerText = result;
+
+        }
+   </script>
+</body>
+
+</html>

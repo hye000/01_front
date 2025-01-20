@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 자바 스크립트 개요</title>
+
+    <!-- 외부 방식 -->
+    <script src="resources/js/01_sample.js"></script>
+</head>
+<body>
+    <!-- 
+        웹(페이지)는 크게 3가지 구성요소로 구분할 수 있음
+
+        - HTML      : 웹 문서의 큰 "틀"을 잡기 위한 요소
+        - CSS       : HTML로 구성된 DOM(Document Object Model)에 대해 다양한 "스타일"을 적용하기 위한 요소
+        - JavaScript: 웹 문서에서 이벤트가 발생했을 때 실행해야 하는 "기능(동작)"을 처리하기 위한 요소
+    -->
+
+    <h1>자바 스크립트 개요</h1>
+
+    <h3>스크립트 언어란?</h3>
+
+    <p>
+        프로그램의 동장을 사용자 요구에 맞게 수행하도록 해주는 용도<br>
+        빠르게 배울 수 있고 짧은 소스코드로 상호작용되도록 고안됨     
+    </p>    
+
+    <h3>자바스크립트</h3>
+    <p>
+        웹 브라우저에서 많이 사용되는 <b>인터프리터</b>방식의 스크립트 언어<br>
+        => 인터프리터 방식 : 코드를 한줄씩 읽어가면서 바로 실행하는 방식<br>
+        -> 코드에 문법 오류가 있으면 실행 시점에 알 수 있음
+    </p>
+
+    <hr>
+
+    <h3>장단점</h3>
+    <h4>* 장점</h4>
+    <ul>
+        <li>컴파일이라는 과정 없이 인터프리터로 코드를 한줄씩 읽어가면서 바로 실행되기 때문에 수행속도가 빠르다</li>
+        <li>코드 작성이 간단해서 처음 접하기 수월하다 (단순한 구조/원칙/규칙) <br>
+            ex) 접근제한자 개념 없음, 변수 선언 시 자료형을 정해줄 필요 없음
+        </li>
+    </ul>
+
+    <h4>* 단점</h4>
+    <ul>
+        <li>웹에 특화된 기술 -> 내부에서 제공하는 기능이 제한적</li>
+        <li>HTML 문서 내에 작성하면 외부에 공개됨 -> 보안취약점 발생</li>
+    </ul>
+
+    <h3>자바스크립트 사용법</h3>
+    <ol>
+        <li>inline(인라인) : 태그 내에 간단한 소스코드를 작성해서 사용하는 방법</li>
+        <li>internal(내부) :    HTML 문서 내에 소스코드를 작성해서 사용하는 방법 (script 태그)</li>
+        <li>external(외부) : 별도의 자바스크립트파일(.js)로 소스코드를 작성해서 현재 문서에 연결해서 사용하는 방법(script 태그 - src 속성)</li>
+    </ol>
+
+    <h4>* 인라인 방식</h4>
+    <p>
+        [표현법] &lt;태그명 on이벤트명="자바스크립트 코드(해당 요소에 이벤트가 발생되었을 때 실행할 내용)"&gt;
+    </p>
+
+    <button onclick="window.alert('Hello, JavaScript!');">알림창 출력</button>
+    <button onclick='console.log("확인용 콘솔");'>콘솔에 출력</button>
+
+    <h4>* 내부 방식</h4>
+    <p>
+        script 태그 영역 안에 소스코드를 작성<br>
+        => head 태그, body 태그내에 모두 작성이 가능
+    </p>
+
+    <button id="btn">알림창 출력</button>
+    <button onclick="btnClick();">콘솔에 출력</button>
+
+    <script>
+        // 한줄 주석 ---------- 자바스크립트 영역 ----------
+        /* 
+            여러줄 주석 ctrl + shift + a
+        */ 
+        
+        // 현재 문서 내에 btn이라는 아이디 속성을 가진 요소
+        // 변수에 저장(담아두기)
+        let btn = document.getElementById("btn")
+        btn.onclick = function() { //이름이 없는 함수(익명함수)
+            window.alert('Hello, JavaScript~');
+        }
+
+        // 함수의 이름을 부여하여 정의
+        function btnClick() {
+            console.log("스크립트에서 출력하기");
+        }
+
+        
+    </script>
+
+    <br><br>
+
+    <h4>* 외부 방식</h4>
+    <p>
+        외부 파일(.js)을 작성하여 현재 문서에 연결<br>
+        => script 태그를 사용하여 src 속성에 파일 경로 작성
+    </p>
+    
+    <button onclick="test();">알림창 출력</button>
+    <button id="btn2">콘솔에 출력</button>
+
+    <br>
+    <h4></h4>
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

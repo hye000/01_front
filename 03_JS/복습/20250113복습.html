@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+
+    - 다음 중 변수명으로 사용하기 적절한 것은? >> year2025, age 
+        2025year, year2025, improt*, age, let
+
+    - "아메리카노"라는 데이터를 변수에 선언 및 할당
+    let coffee = "아메리카노";
+    또는
+    let coffee;             // 변수 선언
+    coffee = "아메리카노";   // 값을 할당(대입)
+
+    - 4000이라는 데이터를 변수에 초기화
+    let num = 4000;
+
+    - 변수에 저장된 데이터의 자료형을 확인하는 함수
+    typeof(변수명/값) 또는 typeof 변수명/값
+
+    - 사용자에게 출생년도를 입력받아 나이 출력하기 (=> 입력받을 수 있는 알림창 활용)
+    (현재 연도를 상수로 저장하여 사용)
+    *나이 계산 : 현재연도 - 출생년도 + 1
+
+    -->
+    <button onclick="test();">나이 입력</button>
+    <p id="result"></p>
+    <script>
+
+    function test() {
+        // alert    : 텍스트와 확인 버튼이 표시되는 알림창
+        // confirm  : 텍스트와 확인, 취소 버튼이 표시되는 알림창
+        // prompt   : 텍스트와 입력창, 확인, 취소 버튼이 표시되는 알림창
+        let birthYear = prompt("출생년도 입력");
+        const currYear = 2025;
+
+        let age = currYear - birthYear + 1;
+        // document.getElementById("result").innerText = age;
+
+        document.querySelector("#result").innerHTML = age;
+        // `${currYear} 기준 나이는 : ${age}살`
+        
+    }
+</script>
+</body>
+</html>
