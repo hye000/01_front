@@ -1,2 +1,2 @@
-# 01_front
+# front-end
 html / css / javascript / jQuery
